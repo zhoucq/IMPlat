@@ -12,9 +12,15 @@ namespace Imp.Data.Mapping.Users
     {
         public UserMap()
         {
-            this.ToTable("Users");
+            this.ToTable("T_User");
             this.HasKey(u=>u.Id);
-            this.Property(u => u.Name).IsRequired().HasMaxLength(256);
+            this.Property(u => u.Id).HasColumnName("Id");
+            this.Property(u => u.Name).IsRequired().HasColumnName("Name");
+            this.Property(u => u.Password).HasColumnName("Password");
+            this.Property(u => u.DisplayName).HasColumnName("DisplayName");
+            this.Property(u => u.Active).HasColumnName("Active");
+            this.Property(u => u.Deleted).HasColumnName("Deleted");
+            
         }
     }
 }

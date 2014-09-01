@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{91D5CBF2-32D4-49E6-8269-499BFFB2B21C}</ProjectGuid>
+    <ProjectGuid>{B6E31BD4-A843-4BA1-BD7B-72B51D837937}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Imp.Core</RootNamespace>
-    <AssemblyName>Imp.Core</AssemblyName>
+    <RootNamespace>Imp.Web.Framework</RootNamespace>
+    <AssemblyName>Imp.Web.Framework</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -31,7 +31,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -39,19 +42,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BaseEntity.cs" />
-    <Compile Include="Domain\Clients\Client.cs" />
-    <Compile Include="Domain\Cms\Article.cs" />
-    <Compile Include="Domain\Commoon\Address.cs" />
-    <Compile Include="Domain\Files\Directory.cs" />
-    <Compile Include="Domain\Files\File.cs" />
-    <Compile Include="Domain\Test\OfficeAssignment.cs" />
-    <Compile Include="Domain\Users\User.cs" />
-    <Compile Include="Domain\Users\UserRole.cs" />
-    <Compile Include="Domain\Users\UserStatus.cs" />
+    <Compile Include="Class1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Security\ImpMembershipProvider.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Imp.Core\Imp.Core.csproj">
+      <Project>{91D5CBF2-32D4-49E6-8269-499BFFB2B21C}</Project>
+      <Name>Imp.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Imp.Services\Imp.Services.csproj">
+      <Project>{594E58F0-F590-4208-BE25-861F2EA6A35F}</Project>
+      <Name>Imp.Services</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
