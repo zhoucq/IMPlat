@@ -54,12 +54,17 @@
     <Compile Include="SchemaTests.cs" />
     <Compile Include="PersistenceTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Users\UserPersistenceTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Imp.Core\Imp.Core.csproj">
+      <Project>{91D5CBF2-32D4-49E6-8269-499BFFB2B21C}</Project>
+      <Name>Imp.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Imp.Data\Imp.Data.csproj">
       <Project>{A4FBBD1C-1FAE-4880-8B5D-FC4C0AF4B5AD}</Project>
       <Name>Imp.Data</Name>

@@ -49,18 +49,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseEntityMap.cs" />
     <Compile Include="ImpObjectContext.cs" />
-    <Compile Include="Mapping\Clients\ClientMap.cs" />
-    <Compile Include="Mapping\Files\DirectoryMap.cs" />
-    <Compile Include="Mapping\Files\FileMap.cs" />
-    <Compile Include="Mapping\Test\OfficeAssignmentMap.cs" />
     <Compile Include="Mapping\Users\UserMap.cs" />
     <Compile Include="Mapping\Users\UserRoleMap.cs" />
-    <Compile Include="Models\DL_Directory.cs" />
-    <Compile Include="Models\DL_FILE.cs" />
-    <Compile Include="Models\DocLibContext.cs" />
-    <Compile Include="Models\Mapping\DL_DirectoryMap.cs" />
-    <Compile Include="Models\Mapping\DL_FILEMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -73,6 +65,7 @@
       <Name>Imp.Core</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

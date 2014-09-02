@@ -37,6 +37,11 @@ namespace Imp.Core.Domain.Users
         public bool Deleted { get; set; }
 
         /// <summary>
+        /// 创建时间
+        /// </summary>
+        public DateTime CreateDate { get; set; }
+
+        /// <summary>
         /// user roles
         /// </summary>
         public virtual ICollection<UserRole> UserRoles

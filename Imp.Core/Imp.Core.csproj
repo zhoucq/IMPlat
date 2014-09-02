@@ -48,7 +48,6 @@
     <Compile Include="Domain\Test\OfficeAssignment.cs" />
     <Compile Include="Domain\Users\User.cs" />
     <Compile Include="Domain\Users\UserRole.cs" />
-    <Compile Include="Domain\Users\UserStatus.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

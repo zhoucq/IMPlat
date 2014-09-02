@@ -14,7 +14,7 @@ namespace Imp.Data.Tests
     public class SchemaTests
     {
         [Test]
-        public void Can_generate_schema()
+        public void Can_generate_schema() 
         {
             Database.SetInitializer<ImpObjectContext>(null);
             var ctx = new ImpObjectContext("Test");
