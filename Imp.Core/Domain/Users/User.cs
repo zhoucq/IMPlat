@@ -7,9 +7,13 @@ using IMP.Core;
 
 namespace Imp.Core.Domain.Users
 {
+    /// <summary>
+    /// user
+    /// </summary>
     public class User : BaseEntity
     {
         private ICollection<Role> _roles;
+        private ICollection<UserGroup> _userGroups;
 
         /// <summary>
         /// 用户名
@@ -47,7 +51,16 @@ namespace Imp.Core.Domain.Users
         public virtual ICollection<Role> Roles
         {
             get { return _roles ?? (_roles = new List<Role>()); }
-            protected set { _roles = value; }
+            set { _roles = value; }
+        }
+
+        /// <summary>
+        /// groups of user
+        /// </summary>
+        public virtual ICollection<UserGroup> UserGroups
+        {
+            get { return _userGroups ?? (_userGroups = new List<UserGroup>()); }
+            set { _userGroups = value; }
         }
     }
 }

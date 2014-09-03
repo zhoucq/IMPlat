@@ -3,27 +3,30 @@ using IMP.Core;
 
 namespace Imp.Core.Domain.Users
 {
+    /// <summary>
+    /// role
+    /// </summary>
     public class Role : BaseEntity
     {
         private ICollection<Permission> _permissions;
 
         /// <summary>
-        /// 角色名称
+        /// name of role
         /// </summary>
         public string Name { get; set; }
 
         /// <summary>
-        /// 角色的系统名称
+        /// system name of role
         /// </summary>
         public string SystemName { get; set; }
 
         /// <summary>
-        /// 显示顺序
+        /// display order of role
         /// </summary>
         public int DisplayOrder { get; set; }
 
         /// <summary>
-        /// 角色拥有的权限
+        /// permissions of role
         /// </summary>
         public virtual ICollection<Permission> Permissions
         {

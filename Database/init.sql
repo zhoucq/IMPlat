@@ -68,3 +68,26 @@ PermissionId varchar(50) not null,
 primary key(RoleId,PermissionId)
 )
 go
+
+-- table T_UserGroup
+if exists (select * from sys.objects where name = 'T_UserGroup' and type = 'u')
+    drop table T_UserGroup
+go
+
+create table T_UserGroup
+(
+Id varchar(50) not null primary key default newid(),
+Name nvarchar(256) not null
+)
+
+-- table T_User_UserGroup_Mapping
+if exists (select * from sys.objects where name = 'T_User_UserGroup_Mapping' and type = 'u')
+    drop table T_User_UserGroup_Mapping
+go
+
+create table T_User_UserGroup_Mapping
+(
+UserId varchar(50) not null,
+UserGroupId varchar(50) not null,
+primary key(UserId,UserGroupId)
+)

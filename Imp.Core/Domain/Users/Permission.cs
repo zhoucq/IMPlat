@@ -9,7 +9,6 @@ namespace Imp.Core.Domain.Users
 {
     public class Permission : BaseEntity
     {
-        private ICollection<Role> _roles;
 
         /// <summary>
         /// 权限名称
@@ -26,13 +25,5 @@ namespace Imp.Core.Domain.Users
         /// </summary>
         public int DisplayOrder { get; set; }
 
-        /// <summary>
-        /// 对应的权限
-        /// </summary>
-        public ICollection<Role> Roles
-        {
-            get { return _roles ?? (_roles = new List<Role>()); }
-            protected set { _roles = value; }
-        }
     }
 }

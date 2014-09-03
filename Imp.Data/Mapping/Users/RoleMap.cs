@@ -7,6 +7,9 @@ using Imp.Core.Domain.Users;
 
 namespace Imp.Data.Mapping.Users
 {
+    /// <summary>
+    /// role map
+    /// </summary>
     public class RoleMap : BaseEntityMap<Role>
     {
         public RoleMap()
@@ -16,7 +19,7 @@ namespace Imp.Data.Mapping.Users
             this.Property(m => m.SystemName).HasColumnName("SystemName");
             this.Property(m => m.DisplayOrder).HasColumnName("DisplayOrder");
             this.HasMany(m => m.Permissions)
-                .WithMany(m=>m.Roles)
+                .WithMany()
                 .Map(m =>
                 {
                     m.ToTable("T_Role_Permission_Mapping");

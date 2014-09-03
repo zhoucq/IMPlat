@@ -58,6 +58,7 @@
     <Compile Include="Domain\Users\Permission.cs" />
     <Compile Include="Domain\Users\Role.cs" />
     <Compile Include="Domain\Users\User.cs" />
+    <Compile Include="Domain\Users\UserGroup.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

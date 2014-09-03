@@ -55,6 +55,7 @@
     <Compile Include="ImpObjectContext.cs" />
     <Compile Include="Mapping\Users\PermissionMap.cs" />
     <Compile Include="Mapping\Users\RoleMap.cs" />
+    <Compile Include="Mapping\Users\UserGroupMap.cs" />
     <Compile Include="Mapping\Users\UserMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
