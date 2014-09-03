@@ -54,6 +54,7 @@
     <Compile Include="SchemaTests.cs" />
     <Compile Include="PersistenceTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Users\RolePersistenceTests.cs" />
     <Compile Include="Users\UserPersistenceTests.cs" />
   </ItemGroup>
   <ItemGroup>

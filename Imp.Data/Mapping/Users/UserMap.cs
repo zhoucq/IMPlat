@@ -23,6 +23,14 @@ namespace Imp.Data.Mapping.Users
             this.Property(u => u.Active).IsRequired().HasColumnName("Active");
             this.Property(u => u.Deleted).IsRequired().HasColumnName("Deleted");
             this.Property(u => u.CreateDate).HasColumnName("CreateDate");
+            this.HasMany(u => u.Roles)
+                .WithMany()
+                .Map(m =>
+                {
+                    m.ToTable("T_User_Role_Mapping");
+                    m.MapLeftKey("UserId");
+                    m.MapRightKey("RoleId");
+                });
         }
     }
 }
