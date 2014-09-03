@@ -20,6 +20,8 @@ namespace Imp.Services.Users
         /// <returns></returns>
         User GetUserByUsername(string username);
 
+        void InsertUser(User user);
+
         #endregion
     }
 }

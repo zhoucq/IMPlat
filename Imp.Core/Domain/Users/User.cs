@@ -9,7 +9,7 @@ namespace Imp.Core.Domain.Users
 {
     public class User : BaseEntity
     {
-        private ICollection<UserRole> _userRoles;
+        //private ICollection<UserRole> _userRoles;
 
         /// <summary>
         /// 用户名
@@ -44,10 +44,10 @@ namespace Imp.Core.Domain.Users
         /// <summary>
         /// user roles
         /// </summary>
-        public virtual ICollection<UserRole> UserRoles
-        {
-            get { return _userRoles ?? (_userRoles = new List<UserRole>()); }
-            protected set { _userRoles = value; }
-        }
+        //public virtual ICollection<UserRole> UserRoles
+        //{
+        //    get { return _userRoles ?? (_userRoles = new List<UserRole>()); }
+        //    protected set { _userRoles = value; }
+        //}
     }
 }

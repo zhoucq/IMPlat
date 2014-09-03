@@ -53,6 +53,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Database", "Database", "{E0
 		Database\init.sql = Database\init.sql
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Imp.Services.Tests", "Imp.Services.Tests\Imp.Services.Tests.csproj", "{D5678336-A25C-4C51-807E-6F985289F879}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -87,6 +89,10 @@ Global
 		{594E58F0-F590-4208-BE25-861F2EA6A35F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{594E58F0-F590-4208-BE25-861F2EA6A35F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{594E58F0-F590-4208-BE25-861F2EA6A35F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D5678336-A25C-4C51-807E-6F985289F879}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D5678336-A25C-4C51-807E-6F985289F879}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D5678336-A25C-4C51-807E-6F985289F879}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D5678336-A25C-4C51-807E-6F985289F879}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -99,5 +105,6 @@ Global
 		{A4FBBD1C-1FAE-4880-8B5D-FC4C0AF4B5AD} = {9A35945C-4530-49FE-A177-06248D193173}
 		{594E58F0-F590-4208-BE25-861F2EA6A35F} = {9A35945C-4530-49FE-A177-06248D193173}
 		{7A7E0E6E-6883-40F5-B0AC-25C8875CC06F} = {E5DC4B82-1899-4EEC-80EB-E65C916E417D}
+		{D5678336-A25C-4C51-807E-6F985289F879} = {E5DC4B82-1899-4EEC-80EB-E65C916E417D}
 	EndGlobalSection
 EndGlobal

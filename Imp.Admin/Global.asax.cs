@@ -6,6 +6,12 @@ using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using Autofac;
+using Autofac.Integration.Mvc;
+using Imp.Core.Data;
+using Imp.Core.Domain.Users;
+using Imp.Data;
+using Imp.Services.Users;
 
 namespace Imp.Admin
 {
@@ -16,6 +22,17 @@ namespace Imp.Admin
     {
         protected void Application_Start()
         {
+            // autofac di
+            var builder = new ContainerBuilder();
+            builder.RegisterControllers(typeof (MvcApplication).Assembly);
+            builder.RegisterType(typeof (UserService)).AsImplementedInterfaces();
+            builder.RegisterType(typeof (EfRepository<User>)).AsImplementedInterfaces();
+            // builder.RegisterType(typeof(ImpObjectContext)).AsImplementedInterfaces();
+            
+            builder.Register<IDbContext>(c => new ImpObjectContext("data source=(local);initial catalog=ImpTests;user id=sa;password=P@ssword"));
+            var container = builder.Build();
+            DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
+
             AreaRegistration.RegisterAllAreas();
 
             WebApiConfig.Register(GlobalConfiguration.Configuration);
