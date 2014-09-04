@@ -54,7 +54,6 @@
     <Compile Include="Domain\Commoon\Address.cs" />
     <Compile Include="Domain\Files\Directory.cs" />
     <Compile Include="Domain\Files\File.cs" />
-    <Compile Include="Domain\Test\OfficeAssignment.cs" />
     <Compile Include="Domain\Users\Permission.cs" />
     <Compile Include="Domain\Users\Role.cs" />
     <Compile Include="Domain\Users\User.cs" />
