@@ -14,9 +14,6 @@ namespace Imp.Data.Mapping.Users
         public UserMap()
         {
             this.ToTable("T_User");
-            this.HasKey(u => u.Id);
-            this.Property(u => u.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
-            this.Property(u => u.Id).HasColumnName("Id");
             this.Property(u => u.Name).IsRequired().HasColumnName("Name");
             this.Property(u => u.Password).HasColumnName("Password");
             this.Property(u => u.DisplayName).HasColumnName("DisplayName");
@@ -33,14 +30,14 @@ namespace Imp.Data.Mapping.Users
                     m.MapRightKey("RoleId");
                 });
 
-            this.HasMany(u => u.UserGroups)
-                .WithMany(t => t.Users)
-                .Map(m =>
-                {
-                    m.ToTable("T_User_UserGroup_Mapping");
-                    m.MapLeftKey("UserId");
-                    m.MapRightKey("UserGroupId");
-                });
+            //this.HasMany(u => u.UserGroups)
+            //    .WithMany(t => t.Users)
+            //    .Map(m =>
+            //    {
+            //        m.ToTable("T_User_UserGroup_Mapping");
+            //        m.MapLeftKey("UserId");
+            //        m.MapRightKey("UserGroupId");
+            //    });
         }
     }
 }

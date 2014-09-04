@@ -14,7 +14,7 @@ namespace Imp.Data
         public ImpObjectContext(string nameOrConnectionString)
             : base(nameOrConnectionString)
         {
-            this.Configuration.ValidateOnSaveEnabled = false;
+            // this.Configuration.ValidateOnSaveEnabled = false;
         }
 
         #endregion

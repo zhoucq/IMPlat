@@ -24,7 +24,7 @@ namespace Imp.Core.Domain.Users
         /// </summary>
         public virtual ICollection<User> Users
         {
-            get { return _users ?? (new List<User>()); }
+            get { return _users ?? (_users = new List<User>()); }
             set { _users = value; }
         }
     }

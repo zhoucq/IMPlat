@@ -12,11 +12,8 @@ namespace Imp.Data.Mapping.Users
         public PermissionMap()
         {
             this.ToTable("T_Permission");
+            this.HasKey(m => m.Id);
             this.Property(m => m.SystemName).IsRequired();
-
-            //this.HasMany(m => m.Roles)
-            //    .WithMany(m => m.Permissions)
-            //    .Map(m => m.ToTable("T_Role_Permission_Mapping"));
         }
     }
 }
