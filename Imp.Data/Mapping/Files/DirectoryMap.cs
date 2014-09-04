@@ -8,14 +8,16 @@ using Imp.Core.Domain.Files;
 
 namespace Imp.Data.Mapping.Files
 {
-    public class DirectoryMap : EntityTypeConfiguration<Directory>
+    public class DirectoryMap : BaseEntityMap<Directory>
     {
         public DirectoryMap()
         {
-            this.ToTable("Directory");
-            this.HasKey(dm => dm.Id);
+            this.ToTable("T_Directory");
+
+            // this.Property(t => t.ParentDirectoryId).HasColumnName("PId");
+
             this.HasOptional(dm => dm.ParentDirectory)
-                .WithMany()
+                .WithMany(dm => dm.SubDirectories)
                 .HasForeignKey(dm => dm.ParentDirectoryId);
         }
     }

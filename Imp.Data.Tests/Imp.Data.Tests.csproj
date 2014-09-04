@@ -51,6 +51,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Files\DirectoryPersistenceTests.cs" />
+    <Compile Include="Files\FilePersistenceTests.cs" />
     <Compile Include="SchemaTests.cs" />
     <Compile Include="PersistenceTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
