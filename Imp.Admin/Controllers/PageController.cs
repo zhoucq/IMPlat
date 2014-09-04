@@ -33,6 +33,38 @@ namespace Imp.Admin.Controllers
         {
             return View();
         }
+        /// <summary>
+        /// 菜单二
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult Tab2()
+        {
+            return View();
+        }
+        /// <summary>
+        /// 菜单二
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult Tab3()
+        {
+            return View();
+        }
+
+        /// <summary>
+        /// 分部菜单一
+        /// </summary>
+        /// <param name="url"></param>
+        /// <returns></returns>
+        public ActionResult PartialTitle(string url)
+        {
+            var a = url;
+            return PartialView();
+        }
+
+        public ActionResult PartialMenu(string url)
+        {
+            return PartialView();
+        }
 
     }
 }
