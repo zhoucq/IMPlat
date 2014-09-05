@@ -187,6 +187,9 @@ body {
 .nav-list .submenu .submenu a .badge,.nav-list .submenu .submenu a .label {
 	top:6px
 }
+div .sidebar {
+    min-height: 600px;
+}
 .sidebar-collapse {
 	border-bottom:1px solid #e0e0e0;background-color:#f3f3f3;text-align:center;padding:3px 0;position:relative
 }

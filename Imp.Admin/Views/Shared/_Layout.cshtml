@@ -6,42 +6,42 @@
     <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-</head>
-<body style="background-color: #e6e6e6;">
-    <div style="background-color: #3FA7CB;">
-        @Html.Action("PartialTitle", "Page", new { Request.Url })
-    </div>
-    <div class="container">
-        <div class="col-md-12">
-            <div class="tab-content" style="background-color: #f2f2f2;">
-                @Html.Action("PartialMenu", "Page", new { Request.Url })
-                <div class="main-content" style="background-color: white;">
-                    @RenderBody()
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    @section scripts{
-        <script type="text/javascript">
-
-            jQuery(document).ready(function () {
-                jQuery(".dropdown-toggle").toggle(
-
-                    function () {
-                        this.addClass("open");
-                    },
-                    function () {
-                        this.removeClass("open");
-                    });
-            });
-
-
-
-        </script>
-    }
-
     @Scripts.Render("~/bundles/jquery")
     @RenderSection("scripts", required: false)
+</head>
+<body style="background-color: #e6e6e6;">
+    <div class="container">
+        <div style="background-color: #ffffff;">
+            @Html.Action("PartialTitle", "Page", new { Request.Url })
+        </div>
+
+        <div class="tab-content" style="background-color: #f2f2f2;">
+            @Html.Action("PartialMenu", "Page", new { Request.Url })
+            <div class="main-content" style="background-color: white;">
+                @RenderBody()
+            </div>
+        </div>
+
+        @section scripts{
+            <script type="text/javascript">
+
+                jQuery(document).ready(function () {
+                    jQuery(".dropdown-toggle").toggle(
+
+                        function () {
+                            this.addClass("open");
+                        },
+                        function () {
+                            this.removeClass("open");
+                        });
+                });
+
+
+
+            </script>
+        }
+
+
+    </div>
 </body>
 </html>

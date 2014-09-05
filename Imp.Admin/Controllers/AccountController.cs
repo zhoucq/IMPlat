@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI.WebControls;
 using Imp.Services.Users;
 
 namespace Imp.Admin.Controllers
@@ -27,5 +28,19 @@ namespace Imp.Admin.Controllers
             //return Content("");
             return Json(user, JsonRequestBehavior.AllowGet);
         }
+
+        #region Methods
+
+        #region Users
+
+        // get /account/users
+        // 用户列表
+        public ActionResult Users()
+        {
+            return View();
+        }
+        #endregion
+
+        #endregion
     }
 }

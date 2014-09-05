@@ -28,6 +28,11 @@ namespace Imp.Admin
                        "~/Content/custom/common.css",
                        "~/Content/site.css,"));
 
+            bundles.Add(new StyleBundle("~/Content/style").Include(
+                       "~/Content/bootstrap.css",
+                       "~/Content/bootstrap-theme.css",
+                       "~/Content/style.css"));
+
             bundles.Add(new StyleBundle("~/Content/themes/base/css").Include(
                         "~/Content/themes/base/jquery.ui.core.css",
                         "~/Content/themes/base/jquery.ui.resizable.css",

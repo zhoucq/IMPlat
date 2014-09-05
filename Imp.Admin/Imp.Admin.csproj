@@ -151,6 +151,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\custom\common.css" />
+    <Content Include="Content\images\logo.png" />
     <Content Include="Content\img\logo.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
@@ -252,6 +253,7 @@
     <Content Include="Views\Page\Tab3.cshtml" />
     <Content Include="Views\Page\PartialTitle.cshtml" />
     <Content Include="Views\Page\PartialMenu.cshtml" />
+    <Content Include="Views\Account\Users.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
