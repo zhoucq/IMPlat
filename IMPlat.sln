@@ -5,28 +5,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentatio
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Imp.Admin", "Imp.Admin\Imp.Admin.csproj", "{919006C7-76E6-47A1-A2F5-A5F67FD6AAE5}"
 EndProject
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Imp.Web", "http://localhost:15570", "{0095AB5A-4A7E-4F07-B7FA-35DC0FCB2B42}"
-	ProjectSection(WebsiteProperties) = preProject
-		UseIISExpress = "true"
-		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5"
-		Debug.AspNetCompiler.VirtualPath = "/localhost_15570"
-		Debug.AspNetCompiler.PhysicalPath = "Imp.Web\"
-		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_15570\"
-		Debug.AspNetCompiler.Updateable = "true"
-		Debug.AspNetCompiler.ForceOverwrite = "true"
-		Debug.AspNetCompiler.FixedNames = "false"
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.VirtualPath = "/localhost_15570"
-		Release.AspNetCompiler.PhysicalPath = "Imp.Web\"
-		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_15570\"
-		Release.AspNetCompiler.Updateable = "true"
-		Release.AspNetCompiler.ForceOverwrite = "true"
-		Release.AspNetCompiler.FixedNames = "false"
-		Release.AspNetCompiler.Debug = "False"
-		SlnRelativePath = "Imp.Web\"
-		DefaultWebSiteLanguage = "Visual C#"
-	EndProjectSection
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libraries", "Libraries", "{9A35945C-4530-49FE-A177-06248D193173}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Imp.Core", "Imp.Core\Imp.Core.csproj", "{91D5CBF2-32D4-49E6-8269-499BFFB2B21C}"
@@ -65,10 +43,6 @@ Global
 		{919006C7-76E6-47A1-A2F5-A5F67FD6AAE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{919006C7-76E6-47A1-A2F5-A5F67FD6AAE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{919006C7-76E6-47A1-A2F5-A5F67FD6AAE5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0095AB5A-4A7E-4F07-B7FA-35DC0FCB2B42}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0095AB5A-4A7E-4F07-B7FA-35DC0FCB2B42}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0095AB5A-4A7E-4F07-B7FA-35DC0FCB2B42}.Release|Any CPU.ActiveCfg = Debug|Any CPU
-		{0095AB5A-4A7E-4F07-B7FA-35DC0FCB2B42}.Release|Any CPU.Build.0 = Debug|Any CPU
 		{91D5CBF2-32D4-49E6-8269-499BFFB2B21C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{91D5CBF2-32D4-49E6-8269-499BFFB2B21C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{91D5CBF2-32D4-49E6-8269-499BFFB2B21C}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -99,7 +73,6 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{919006C7-76E6-47A1-A2F5-A5F67FD6AAE5} = {405D1C69-5FF0-4C17-AD73-6050B325D219}
-		{0095AB5A-4A7E-4F07-B7FA-35DC0FCB2B42} = {405D1C69-5FF0-4C17-AD73-6050B325D219}
 		{B6E31BD4-A843-4BA1-BD7B-72B51D837937} = {405D1C69-5FF0-4C17-AD73-6050B325D219}
 		{91D5CBF2-32D4-49E6-8269-499BFFB2B21C} = {9A35945C-4530-49FE-A177-06248D193173}
 		{A4FBBD1C-1FAE-4880-8B5D-FC4C0AF4B5AD} = {9A35945C-4530-49FE-A177-06248D193173}
