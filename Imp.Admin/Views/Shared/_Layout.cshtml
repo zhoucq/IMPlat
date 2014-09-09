@@ -10,8 +10,8 @@
     @RenderSection("scripts", required: false)
 </head>
 <body style="background-color: #e6e6e6;">
-    <div class="container">
-        <div style="background-color: #ffffff;">
+    <div class="container-fluid">
+        <div style="background-color:#fff;border-bottom: 1px solid #0000ff;">
             @Html.Action("PartialTitle", "Page", new { Request.Url })
         </div>
 
@@ -23,25 +23,16 @@
         </div>
 
         @section scripts{
-            <script type="text/javascript">
-
-                jQuery(document).ready(function () {
-                    jQuery(".dropdown-toggle").toggle(
-
-                        function () {
-                            this.addClass("open");
-                        },
-                        function () {
-                            this.removeClass("open");
-                        });
-                });
-
-
-
-            </script>
+          
         }
 
 
     </div>
+    <footer>
+        <p class="text-center" style="border-top:1px solid #0000ff">
+            Copyright © 2013-2014 www.mvs.com.cn All right reserved
+
+        </p>
+    </footer>
 </body>
 </html>

@@ -1,21 +1,21 @@
 ﻿<div class="sidebar">
     <ul class="nav nav-list">
-        <li>
+        <li class="lipointer">
             <a href="#">
                 <i class="icon-desktop"></i>
                 <span class="menu-text">控制台 </span>
             </a>
         </li>
 
-        <li>
+        <li class="lipointer">
             <a href="#">
                 <i class="icon-desktop"></i>
                 <span class="menu-text">文字排版 </span>
             </a>
         </li>
 
-        <li class="active open">
-            <a class="dropdown-toggle" href="#">
+        <li class="active open lipointer">
+            <a class="dropdown-toggle">
                 <i class="icon-desktop"></i>
                 <span class="menu-text">UI 组件 </span>
 
@@ -45,8 +45,8 @@
             </ul>
         </li>
 
-        <li>
-            <a class="dropdown-toggle" href="#">
+        <li class="lipointer">
+            <a class="dropdown-toggle">
                 <i class="icon-desktop"></i>
                 <span class="menu-text">表格 </span>
 
@@ -67,3 +67,14 @@
     </ul>
 
 </div>
+  <script type="text/javascript">
+
+      jQuery(document).ready(function () {
+          jQuery(".lipointer").click(function () {
+              jQuery(this).toggleClass("active open");
+          });
+      });
+
+      
+      
+  </script>

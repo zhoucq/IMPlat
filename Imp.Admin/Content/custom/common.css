@@ -5,6 +5,7 @@ body {
 .ml100{ margin-left: 100px;}
 .mt20{ margin-top: 20px;}
 .pl15{ padding-left: 15px;}
+.lipointer{ cursor: pointer;}
 
 
 
@@ -194,7 +195,7 @@ div .sidebar {
 	border-bottom:1px solid #e0e0e0;background-color:#f3f3f3;text-align:center;padding:3px 0;position:relative
 }
 .sidebar-collapse>[class*="icon-"] {
-	display:inline-block;cursor:pointer;font-size:14px;color:#aaa;border:1px solid #bbb;padding:0 5px;line-height:18px;border-radius:16px;ackground-color:#fff;position:relative
+	display:inline-block;cursor:pointer;font-size:14px;color:#aaa;border:1px solid #bbb;padding:0 5px;line-height:18px;border-radius:16px;background-color:#fff;position:relative
 }
 .sidebar-collapse:before {
 	content:"";display:inline-block;height:0;border-top:1px solid #e0e0e0;position:absolute;left:15px;right:15px;top:13px
