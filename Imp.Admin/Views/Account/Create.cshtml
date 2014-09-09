@@ -6,11 +6,20 @@
 @{
     IList<Role> allRoles = ViewBag.AllRoles;
 }
+<form role="form" id="formCreateUser" method="post" action="@Url.Action("Create", "Account")">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            创建用户 <a href="@Url.Action("List", "Account")" class="small">(返回用户列表)</a>
+            <div class="pull-right">
+                <input type="submit" class="btn btn-sm btn-primary" name="save" value="保存" />
+                <input type="submit" class="btn btn-sm btn-primary" name="continueEditing" value="保存并继续添加" />
+            </div>
+        </div>
+        <div class="panel-body">
 
-<div class="panel panel-default">
-    <div class="panel-heading">创建用户</div>
-    <div class="panel-body">
-        <form role="form" id="formCreateUser" method="post" action="@Url.Action("Create", "Account")" autocomplete="off" >
+
+
+            <input type="hidden" name="continueEdit" id="continueEdit" />
             <div class="form-group">
                 <label for="username">登录名</label>
                 <input type="text" class="form-control" name="username" id="username" placeholder="登录名" />
@@ -43,10 +52,10 @@
                 <button class="btn btn-primary" type="submit">保存</button>
                 <a href="@Url.Action("List", "Account")" class="btn btn-default">返回</a>
             </div>
-        </form>
-    </div>
-</div>
 
+        </div>
+    </div>
+</form>
 <script type="text/javascript">
     var validator;
     $(document).ready(function () {
@@ -68,7 +77,7 @@
                 password: "密码不能为空",
                 password2: {
                     required: "重复密码不能为空",
-                    equalTo:"输入的密码不匹配"
+                    equalTo: "输入的密码不匹配"
                 }
             }, errorPlacement: function (error, element) {
                 if (element.is(":radio"))
@@ -82,4 +91,5 @@
         });
 
     });
+
 </script>

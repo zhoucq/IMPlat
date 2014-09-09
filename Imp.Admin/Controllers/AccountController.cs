@@ -38,13 +38,13 @@ namespace Imp.Admin.Controllers
         // 用户列表
         public ActionResult List()
         {
-
+            // var roleIds = 
             return View();
         }
 
         /// <summary>
         /// create a user
-        /// </summary>
+        /// </summary>/ 
         /// <returns></returns>
         public ActionResult Create()
         {
@@ -64,14 +64,28 @@ namespace Imp.Admin.Controllers
                 DisplayName = form["displayName"],
                 CreateDate = DateTime.Now
             };
+            if (string.IsNullOrEmpty(form["role"]))
+            {
+                throw new ArgumentNullException("role");
+            }
             var roleIds = form["role"].Split(',');
+
             foreach (var roleId in roleIds)
             {
-                // user.Roles.Add(_userService.GetRoleById(roleId));
-                 user.Roles.Add(allRoles.FirstOrDefault(m => m.Id == roleId));
+                user.Roles.Add(allRoles.FirstOrDefault(m => m.Id == roleId));
             }
             _userService.InsertUser(user);
-            return Content("添加成功");
+
+            bool continueEditing = form.AllKeys.Contains("continueEditing");
+            if (continueEditing)
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("List", "Account");
+            }
+
         }
         #endregion
 
