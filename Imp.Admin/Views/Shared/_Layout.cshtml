@@ -7,18 +7,56 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
     @RenderSection("scripts", required: false)
+
+    <style type="text/css">
+        .wrap {
+            overflow: hidden;
+            padding: 0;
+            padding-left: 190px;
+            background-color: #fff;
+        }
+
+        .menu .content {
+            height: auto;
+            margin-bottom: -10000px;
+            padding-bottom: 10000px;
+        }
+
+        .menu {
+            display: inline;
+            float: left;
+            width: 190px;
+            margin-left: -190px;
+        }
+
+        .content {
+            float: right;
+            width: 100%;
+            background: #fff;
+        }
+    </style>
 </head>
 <body style="background-color: #e6e6e6;">
-    <div class="container">
+    <div class="container-fluid">
         <div style="background-color: #ffffff;">
             @Html.Action("PartialTitle", "Page", new { Request.Url })
         </div>
 
-        <div class="tab-content" style="background-color: #f2f2f2;">
-            @Html.Action("PartialMenu", "Page", new { Request.Url })
-            <div class="main-content" style="background-color: white;">
+
+        <div class="wrap">
+            <div class="menu">
+                @Html.Action("PartialMenu", "Page", new { Request.Url })
+            </div>
+            <div class="content">
                 @RenderBody()
+            </div>
+        </div>
+
+        <div class="tab-content" style="background-color: #f2f2f2;">
+
+            <div class="main-content" style="background-color: white;">
             </div>
         </div>
 

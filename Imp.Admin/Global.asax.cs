@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Http;
@@ -24,12 +25,14 @@ namespace Imp.Admin
         {
             // autofac di
             var builder = new ContainerBuilder();
-            builder.RegisterControllers(typeof (MvcApplication).Assembly);
-            builder.RegisterType(typeof (UserService)).AsImplementedInterfaces();
-            builder.RegisterType(typeof (EfRepository<User>)).AsImplementedInterfaces();
+            builder.RegisterControllers(typeof(MvcApplication).Assembly);
+            builder.RegisterType(typeof(UserService)).AsImplementedInterfaces();
+            //builder.RegisterType(typeof(EfRepository<User>)).AsImplementedInterfaces();
+            //builder.RegisterType(typeof(EfRepository<Role>)).AsImplementedInterfaces();
+            builder.RegisterGeneric(typeof(EfRepository<>)).As(typeof(IRepository<>));
             // builder.RegisterType(typeof(ImpObjectContext)).AsImplementedInterfaces();
-            
-            builder.Register<IDbContext>(c => new ImpObjectContext("data source=(local);initial catalog=ImpTests;user id=sa;password=P@ssword"));
+
+            builder.Register<IDbContext>(c => new ImpObjectContext("data source=(local);initial catalog=ImpDev;user id=sa;password=P@ssword")).InstancePerLifetimeScope();
             var container = builder.Build();
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
 

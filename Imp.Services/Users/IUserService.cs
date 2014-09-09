@@ -23,5 +23,20 @@ namespace Imp.Services.Users
         void InsertUser(User user);
 
         #endregion
+
+        #region Roles
+        /// <summary>
+        /// get all user roles
+        /// </summary>
+        /// <returns>role collection</returns>
+        IList<Role> GetAllRoles();
+
+        /// <summary>
+        /// get role by id
+        /// </summary>
+        /// <returns></returns>
+        Role GetRoleById(string id);
+
+        #endregion
     }
 }

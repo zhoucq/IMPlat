@@ -26,6 +26,11 @@ namespace Imp.Core.Domain.Users
         public int DisplayOrder { get; set; }
 
         /// <summary>
+        /// system role 
+        /// </summary>
+        public bool IsSystemRole { get; set; }
+
+        /// <summary>
         /// permissions of role
         /// </summary>
         public virtual ICollection<Permission> Permissions

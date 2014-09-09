@@ -1,0 +1,85 @@
+﻿@using Imp.Core.Domain.Users
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@{
+    IList<Role> allRoles = ViewBag.AllRoles;
+}
+
+<div class="panel panel-default">
+    <div class="panel-heading">创建用户</div>
+    <div class="panel-body">
+        <form role="form" id="formCreateUser" method="post" action="@Url.Action("Create", "Account")" autocomplete="off" >
+            <div class="form-group">
+                <label for="username">登录名</label>
+                <input type="text" class="form-control" name="username" id="username" placeholder="登录名" />
+            </div>
+            <div class="form-group">
+                <label for="password">密码</label>
+                <input type="password" class="form-control" name="password" id="password" placeholder="密码">
+            </div>
+            <div class="form-group">
+                <label for="password2">重复密码</label>
+                <input type="password" class="form-control" name="password2" id="password2" placeholder="重复密码">
+            </div>
+            <div class="form-group">
+                <label for="displayName">姓名</label>
+                <input type="text" class="form-control" name="displayName" id="displayName" placeholder="姓名">
+            </div>
+            <div class="form-group">
+                <label>角色</label>
+                <div>
+                    @foreach (var role in allRoles)
+                    {
+                        <label class="checkbox-inline">
+                            <input type="checkbox" id="role" name="role" value="@role.Id">
+                            @role.Name
+                        </label>
+                    }
+                </div>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-primary" type="submit">保存</button>
+                <a href="@Url.Action("List", "Account")" class="btn btn-default">返回</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script type="text/javascript">
+    var validator;
+    $(document).ready(function () {
+        validator = $("#formCreateUser").validate({
+            rules: {
+                username: "required",
+                displayName: "required",
+                role: "required",
+                password: "required",
+                password2: {
+                    required: true,
+                    equalTo: "#password"
+                }
+            },
+            messages: {
+                username: "请输入用户名",
+                displayName: "请输入姓名",
+                role: "请选择至少一项角色",
+                password: "密码不能为空",
+                password2: {
+                    required: "重复密码不能为空",
+                    equalTo:"输入的密码不匹配"
+                }
+            }, errorPlacement: function (error, element) {
+                if (element.is(":radio"))
+                    error.appendTo(element.parent().next().next());
+                else if (element.is(":checkbox")) {
+                    error.appendTo(element.parent().parent().siblings());
+                }
+                else
+                    error.appendTo(element.siblings());
+            }
+        });
+
+    });
+</script>

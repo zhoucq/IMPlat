@@ -15,12 +15,15 @@ namespace Imp.Services.Users
     {
         #region Fields
         private IRepository<User> _userRepository;
+        private IRepository<Role> _roleRepository;
         #endregion
 
         #region Ctor
-        public UserService(IRepository<User> userRepository)
+        public UserService(IRepository<User> userRepository,
+            IRepository<Role> roleRepository)
         {
             _userRepository = userRepository;
+            _roleRepository = roleRepository;
         }
         #endregion
 
@@ -58,6 +61,30 @@ namespace Imp.Services.Users
 
             _userRepository.Insert(user);
         }
+
+
+        #region Roles
+
+        /// <summary>
+        /// get all roles
+        /// </summary>
+        /// <returns></returns>
+        public IList<Role> GetAllRoles()
+        {
+            var roles = from o in _roleRepository.Table orderby o.DisplayOrder select o;
+            return roles.ToList();
+        }
+
+        /// <summary>
+        /// get role by id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public Role GetRoleById(string id)
+        {
+            return _roleRepository.GetById(id);
+        }
+        #endregion
 
         #endregion
     }

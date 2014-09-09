@@ -17,7 +17,8 @@ namespace Imp.Data.Tests.Users
             var role = new Role
             {
                 Name = "测试角色",
-                SystemName = "Test Role"
+                SystemName = "Test Role",
+                IsSystemRole = true
             };
 
             var fromDb = SaveAndLoadEntity(role);
@@ -30,7 +31,8 @@ namespace Imp.Data.Tests.Users
             var role = new Role
             {
                 Name = "测试角色",
-                SystemName = "Test Role"
+                SystemName = "Test Role",
+                IsSystemRole = false
             };
             role.Permissions.Add(new Permission
             {
