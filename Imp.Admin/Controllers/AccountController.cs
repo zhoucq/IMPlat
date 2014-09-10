@@ -40,6 +40,7 @@ namespace Imp.Admin.Controllers
         public ActionResult List()
         {
             var model = new UserListModel();
+            model.AvailableRoles = _userService.GetAllRoles().Select(m=>m.ToModel()).ToList();
             return View(model);
         }
 

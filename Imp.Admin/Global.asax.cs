@@ -9,6 +9,8 @@ using System.Web.Optimization;
 using System.Web.Routing;
 using Autofac;
 using Autofac.Integration.Mvc;
+using AutoMapper;
+using Imp.Admin.Models.Users;
 using Imp.Core.Data;
 using Imp.Core.Domain.Users;
 using Imp.Data;
@@ -35,6 +37,9 @@ namespace Imp.Admin
             builder.Register<IDbContext>(c => new ImpObjectContext("data source=(local);initial catalog=ImpDev;user id=sa;password=P@ssword")).InstancePerLifetimeScope();
             var container = builder.Build();
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
+
+            Mapper.CreateMap<Role, RoleModel>();
+            Mapper.CreateMap<User, UserModel>();
 
             AreaRegistration.RegisterAllAreas();
 

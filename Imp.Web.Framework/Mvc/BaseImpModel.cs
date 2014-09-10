@@ -12,6 +12,6 @@ namespace Imp.Web.Framework.Mvc
 
     public class BaseImpEntityModel : BaseImpModel
     {
-        public virtual string Id { get; set; }
+        public string Id { get; set; }
     }
 }

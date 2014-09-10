@@ -17,7 +17,7 @@ namespace Imp.Admin.Models.Users
         public string SearchDisplayName { get; set; }
 
         [DisplayName("角色")]
-        public IList<Role> AvailableRoles { get; set; }
+        public IList<RoleModel> AvailableRoles { get; set; }
 
         [DisplayName("角色")]
         public string[] SearchRoleIds { get; set; }

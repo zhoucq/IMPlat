@@ -1,8 +1,9 @@
 ﻿using System.ComponentModel;
+using Imp.Web.Framework.Mvc;
 
 namespace Imp.Admin.Models.Users
 {
-    public class RoleModel
+    public class RoleModel : BaseImpEntityModel
     {
         [DisplayName("角色名称")]
         public string Name { get; set; }
@@ -14,6 +15,6 @@ namespace Imp.Admin.Models.Users
         public int DisplayOrder { get; set; }
 
         [DisplayName("是否系统角色")]
-        public bool IsSystemRole { get; set; } 
+        public bool IsSystemRole { get; set; }
     }
 }
