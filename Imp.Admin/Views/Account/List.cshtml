@@ -1,12 +1,33 @@
-﻿@{
+﻿@model Imp.Admin.Models.Users.UserListModel
+@{
     ViewBag.Title = "Users";
     Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    <table width="100%">
+        <tr>
+            <td>
+                @Html.LabelFor(m=>m.SearchUsername)
+            </td>
+            <td>
+                @Html.EditorFor(m=>m.SearchUsername)
+            </td>
+            <td>
+                @Html.LabelFor(m=>m.SearchDisplayName)
+            </td>
+            <td>
+                @Html.EditorFor(m=>m.SearchDisplayName)
+            </td>
+        </tr>
+    </table>
 }
 
 <div class="panel panel-default">
     <div class="panel-heading">用户列表</div>
     <div class="panel-body">
-        <a href="@Url.Action("Create","Account")" class="btn btn-default pull-right">新建用户</a>
+        <a href="@Url.Action("Create", "Account")" class="btn btn-default pull-right">新建用户</a>
     </div>
     <table class="table table-striped table-responsive">
         <tr>

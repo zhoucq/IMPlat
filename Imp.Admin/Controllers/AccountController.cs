@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.UI.WebControls;
+using Imp.Admin.Models.Users;
 using Imp.Core.Domain.Users;
 using Imp.Services.Users;
 
@@ -38,8 +39,8 @@ namespace Imp.Admin.Controllers
         // 用户列表
         public ActionResult List()
         {
-            // var roleIds = 
-            return View();
+            var model = new UserListModel();
+            return View(model);
         }
 
         /// <summary>
