@@ -8,6 +8,8 @@
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/kendo")
+    
     @RenderSection("scripts", required: false)
 
     <style type="text/css">
@@ -16,6 +18,7 @@
             padding: 0;
             padding-left: 190px;
             background-color: #fff;
+            min-height: 500px;
         }
 
         .menu .content {
@@ -47,7 +50,7 @@
 
         <div class="wrap">
             <div class="menu">
-                @Html.Action("PartialMenu", "Page", new { Request.Url })
+                @*@Html.Action("PartialMenu", "Page", new { Request.Url })*@
             </div>
             <div class="content">
                 @RenderBody()

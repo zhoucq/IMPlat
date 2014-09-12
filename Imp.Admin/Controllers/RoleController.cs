@@ -25,7 +25,8 @@ namespace Imp.Admin.Controllers
 
         public ActionResult Index()
         {
-            return RedirectToAction("List");
+            return View();
+            // return RedirectToAction("List");
         }
 
 

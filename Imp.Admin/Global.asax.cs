@@ -27,14 +27,14 @@ namespace Imp.Admin
         {
             // autofac di
             var builder = new ContainerBuilder();
-            builder.RegisterControllers(typeof(MvcApplication).Assembly);
-            builder.RegisterType(typeof(UserService)).AsImplementedInterfaces();
-            //builder.RegisterType(typeof(EfRepository<User>)).AsImplementedInterfaces();
-            //builder.RegisterType(typeof(EfRepository<Role>)).AsImplementedInterfaces();
-            builder.RegisterGeneric(typeof(EfRepository<>)).As(typeof(IRepository<>));
-            // builder.RegisterType(typeof(ImpObjectContext)).AsImplementedInterfaces();
+            builder.RegisterControllers(typeof(MvcApplication).Assembly).InstancePerLifetimeScope();
+            builder.RegisterType(typeof(UserService)).AsImplementedInterfaces().InstancePerLifetimeScope();
+            builder.RegisterGeneric(typeof(EfRepository<>)).As(typeof(IRepository<>)).InstancePerLifetimeScope();
+            
 
-            builder.Register<IDbContext>(c => new ImpObjectContext("data source=(local);initial catalog=ImpDev;user id=sa;password=P@ssword")).InstancePerLifetimeScope();
+            builder.Register<IDbContext>(c => 
+                new ImpObjectContext("data source=(local);initial catalog=ImpDev;user id=sa;password=P@ssword"))
+                .InstancePerLifetimeScope();
             var container = builder.Build();
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
 
