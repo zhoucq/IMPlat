@@ -1,5 +1,14 @@
 ﻿@{
-    ViewBag.Title = "List";
+    ViewBag.Title = "文件列表";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>List</h2>
+
+<div class="box round first">
+    <h2>文件列表</h2>
+    <div class="block">
+        <h5>
+            <a href="@Url.Action("CreateDirectory", "Doc", new { ParentDirectoryId = "00000000-0000-0000-0000-000000000000" })" class="btn btn-blue">新建文件夹</a>
+        </h5>
+    </div>
+</div>

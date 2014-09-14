@@ -15,7 +15,8 @@ namespace Imp.Admin
                         "~/Scripts/jquery-ui-{version}.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
-                        "~/Scripts/jquery.validate.js"));
+                "~/Scripts/jquery.unobtrusive*",
+                "~/Scripts/jquery.validate*"));
 
 
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
@@ -28,7 +29,7 @@ namespace Imp.Admin
                        "~/Content/bootstrap-theme.css",
                        "~/Content/custom/common.css",
                        "~/Content/site.css"));
-            
+
             bundles.Add(new StyleBundle("~/Content/themes/base/css").Include(
                         "~/Content/themes/base/jquery.ui.core.css",
                         "~/Content/themes/base/jquery.ui.resizable.css",
@@ -47,7 +48,7 @@ namespace Imp.Admin
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js"));
 
-            
+
         }
     }
 }

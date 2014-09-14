@@ -1,0 +1,37 @@
+﻿@model Imp.Admin.Models.Doc.CreateDirectoryModel
+@{
+    ViewBag.Title = "新建文件夹";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(m => m.ParentDirectoryId)
+    <div class="box round first">
+        <h2>新建文件夹</h2>
+        <div class="block">
+            <h5>
+                <input type="submit" class="btn btn-blue" value="保存" />
+                <a href="@Url.Action("Index", "Doc")" class="btn btn-grey">返回</a>
+            </h5>
+        </div>
+
+
+
+
+        <table class="form">
+            <tr>
+                <td class="col1">@Html.LabelFor(m => m.ParentDirectoryPath)</td>
+                <td>@Html.DisplayTextFor(m => m.ParentDirectoryPath)</td>
+            </tr>
+            <tr>
+                <td class="col1">@Html.LabelFor(m => m.NewDirectoryName)</td>
+                <td>
+                    @Html.EditorFor(m => m.NewDirectoryName)
+                    @Html.ValidationMessageFor(m => m.NewDirectoryName)
+
+                </td>
+            </tr>
+        </table>
+
+    </div>
+}

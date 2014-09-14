@@ -145,12 +145,17 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\DocController.cs" />
     <Compile Include="Controllers\PageController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
+    <Compile Include="Controllers\SecurityController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Infrastructure\AutoMapperStartup.cs" />
     <Compile Include="MappingExtensions.cs" />
+    <Compile Include="Models\Doc\CreateDirectoryModel.cs" />
+    <Compile Include="Models\Users\LoginModel.cs" />
     <Compile Include="Models\Users\RoleModel.cs" />
     <Compile Include="Models\Users\UserListModel.cs" />
     <Compile Include="Models\Users\UserModel.cs" />
@@ -164,8 +169,12 @@
     <Content Include="Content\custom\common.css" />
     <Content Include="Content\grid.css" />
     <Content Include="Content\images\logo.png" />
+    <Content Include="Content\img\header-repeat.jpg" />
+    <Content Include="Content\img\img-profile.jpg" />
     <Content Include="Content\img\logo.png" />
+    <Content Include="Content\img\nav-repeat2.jpg" />
     <Content Include="Content\layout.css" />
+    <Content Include="Content\nav.css" />
     <Content Include="Content\reset.css" />
     <Content Include="Content\text.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
@@ -755,6 +764,10 @@
     <Content Include="Scripts\kendo\2014.2.716\kendo.view.min.js.map" />
     <Content Include="Scripts\kendo\2014.2.716\kendo.window.min.js.map" />
     <Content Include="Views\Shared\_AdminLayout.cshtml" />
+    <Content Include="Views\Doc\List.cshtml" />
+    <Content Include="Views\Doc\CreateDirectory.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Security\AccessDenied.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

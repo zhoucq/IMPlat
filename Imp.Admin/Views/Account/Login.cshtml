@@ -1,0 +1,38 @@
+﻿@model Imp.Admin.Models.Users.LoginModel
+@{
+    ViewBag.Title = "用户登录";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+@using (Html.BeginForm())
+{
+    <div class="box" id="login">
+        <table class="form">
+            <tr>
+                <td class="col1">
+                    @Html.LabelFor(m => m.Username)
+                </td>
+                <td>
+                    @Html.EditorFor(m => m.Username)
+                    @Html.ValidationMessageFor(m=>m.Username)
+                </td>
+            </tr>
+            <tr>
+                <td class="col1">
+                    @Html.LabelFor(m => m.Password)
+                </td>
+                <td>
+                    @Html.PasswordFor(m => m.Password)
+                    @Html.ValidationMessageFor(m=>m.Password)
+                    
+                    @Html.ValidationSummary(true)
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <button class="btn btn-blue">登录</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+}
