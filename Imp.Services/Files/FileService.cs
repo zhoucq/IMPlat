@@ -41,7 +41,7 @@ namespace Imp.Services.Files
         /// </summary>
         /// <param name="parentDirectoryId"></param>
         /// <returns></returns>
-        public IList<Directory> GetDirectories(string parentDirectoryId)
+        public IList<Directory> GetSubDirectories(string parentDirectoryId)
         {
             var query = from o in _directoryRepository.Table
                         where o.ParentDirectoryId == parentDirectoryId

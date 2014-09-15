@@ -8,7 +8,7 @@ namespace Imp.Services.Files
     {
         Directory GetDirectory(string directoryId);
 
-        IList<Directory> GetDirectories(string parentDirectoryId);
+        IList<Directory> GetSubDirectories(string parentDirectoryId);
 
         void CreateDirectory(Directory directory);
     }

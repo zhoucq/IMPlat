@@ -4,14 +4,19 @@
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
+    
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/jqueryval")
+    
+    
     <link rel="stylesheet" href="@Url.Content("~/Content/reset.css")" media="screen" />
     <link rel="stylesheet" href="@Url.Content("~/Content/text.css")" media="screen" />
     <link rel="stylesheet" href="@Url.Content("~/Content/grid.css")" media="screen" />
     <link rel="stylesheet" href="@Url.Content("~/Content/layout.css")" media="screen" />
     <link rel="stylesheet" href="@Url.Content("~/Content/nav.css")" media="screen" />
+    @Styles.Render("~/Content/dataTables/css")
+    @Scripts.Render("~/bundles/dataTables")
 </head>
 
 <body>

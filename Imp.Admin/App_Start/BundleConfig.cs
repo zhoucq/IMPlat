@@ -25,9 +25,9 @@ namespace Imp.Admin
                         "~/Scripts/modernizr-*"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                       "~/Content/bootstrap.css",
-                       "~/Content/bootstrap-theme.css",
-                       "~/Content/custom/common.css",
+                       //"~/Content/bootstrap.css",
+                       //"~/Content/bootstrap-theme.css",
+                       //"~/Content/custom/common.css",
                        "~/Content/site.css"));
 
             bundles.Add(new StyleBundle("~/Content/themes/base/css").Include(
@@ -47,6 +47,15 @@ namespace Imp.Admin
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js"));
+
+            // jquery datatables
+            bundles.Add(new ScriptBundle("~/bundles/dataTables").Include(
+                "~/Scripts/jquery.dataTables.js"));
+
+            bundles.Add(new StyleBundle("~/Content/dataTables/css").Include(
+                "~/Content/dataTables/css/jquery.dataTables.css",
+                "~/Content/dataTables/css/jquery.dataTables_themeroller"
+                ));
 
 
         }

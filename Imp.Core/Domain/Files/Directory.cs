@@ -30,7 +30,7 @@ namespace Imp.Core.Domain.Files
         /// <summary>
         /// date last modified
         /// </summary>
-        public DateTime? LastModifyDate { get; set; }
+        public DateTime LastModifyDate { get; set; }
 
         /// <summary>
         /// userid of owner

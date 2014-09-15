@@ -36,13 +36,45 @@ namespace Imp.Admin.Controllers
             return RedirectToAction("List", "Doc");
         }
 
-        public ActionResult List()
+        public ActionResult List(string id)
         {
             if (!_permissionService.Authroize("Doc.List"))
             {
                 return AccessDeniedView();
             }
-            return View();
+
+            if (string.IsNullOrWhiteSpace(id))
+            {
+                id = Guid.Empty.ToString();
+            }
+            var directory = _fileService.GetDirectory(id);
+            var model = new DirectoryModel();
+            model.Name = directory.Name;
+            model.LastModifyDate = (DateTime)directory.LastModifyDate;
+            model.Id = directory.Id;
+            foreach (var subDirectory in directory.SubDirectories)
+            {
+                model.SubDirectories.Add(new DirectoryModel.SubDirectory
+                    {
+                        Id = subDirectory.Id,
+                        Name = subDirectory.Name,
+                        LastModifyDate = subDirectory.LastModifyDate
+                    }
+                );
+            }
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult DirectoryList(string directoryId)
+        {
+            if (!_permissionService.Authroize("Doc.List"))
+            {
+                return AccessDeniedView();
+            }
+
+            var subDirectories = _fileService.GetSubDirectories(directoryId);
+            return Json(subDirectories, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult CreateDirectory(string parentDirectoryId)
@@ -72,10 +104,22 @@ namespace Imp.Admin.Controllers
             directory.Name = model.NewDirectoryName;
             directory.ParentDirectoryId = model.ParentDirectoryId;
             directory.CreateDate = DateTime.Now;
-            // directory.Owner=
+            directory.LastModifyDate = DateTime.Now;
             directory.Owner = _authenticationService.GetAuthenticatedUser();
             _fileService.CreateDirectory(directory);
             return RedirectToAction("List");
+        }
+
+        public ActionResult UploadFile(string parentDirectoryId)
+        {
+            if (!_permissionService.Authroize("Doc.UploadFile"))
+            {
+                return AccessDeniedView();
+            }
+
+            var directory = _fileService.GetDirectory(parentDirectoryId);
+
+            return View();
         }
         #endregion
     }

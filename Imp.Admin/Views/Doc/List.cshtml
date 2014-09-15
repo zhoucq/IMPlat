@@ -1,14 +1,46 @@
-﻿@{
+﻿@model Imp.Admin.Models.Doc.DirectoryModel
+@{
     ViewBag.Title = "文件列表";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
-
+<script type="text/javascript">
+    $("document").ready(function () {
+        $("#table_id").DataTable({
+            "paging": false,
+            "searching": false,
+            "info": false
+        });
+    })
+</script>
 
 <div class="box round first">
     <h2>文件列表</h2>
     <div class="block">
+        <h6>当前位置：@Model.Name</h6>
         <h5>
             <a href="@Url.Action("CreateDirectory", "Doc", new { ParentDirectoryId = "00000000-0000-0000-0000-000000000000" })" class="btn btn-blue">新建文件夹</a>
+            <a href="@Url.Action("UploadFile", "Doc", new { ParentDirectoryId = "00000000-0000-0000-0000-000000000000" })" class="btn btn-blue">上传文件</a>
         </h5>
     </div>
+
+    
+    <table class="display" id="table_id">
+        <thead>
+            <tr>
+                <th>文件名</th>
+                <th>大小</th>
+                <th>修改时间</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var dir in Model.SubDirectories)
+            {
+                <tr>
+                    <td>@dir.Name</td>
+                    <td>-</td>
+                    <td>@dir.LastModifyDate</td>
+                </tr>
+            }
+        </tbody>
+    </table>
 </div>
