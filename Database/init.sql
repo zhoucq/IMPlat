@@ -148,5 +148,8 @@ insert into T_Role values('4FB13804-9433-4A64-BFF3-847D6EAF909C','文档管理员','D
 insert into T_Role values('B1C10065-9CB9-4661-BA4F-D5ACB4127884','文档发布者','Publisher',1,3);
 insert into T_Role values('C1EE2BA2-973E-4488-B884-370727458A8F','用户','User',1,4);
 
+-- user
+insert into T_User (Id,Name,Password,DisplayName,Active,Deleted,CreateDate) values('529860D6-AD2A-45A4-AE59-87ED27DA4E97','admin','admin','admin',1,0,GETDATE())
+
 -- doc/directory
-INSERT INTO T_Directory(Id,Name,OwnerId,IsRoot,ParentDirectoryId,CreateDate,LastModifyDate) values('00000000-0000-0000-0000-000000000000','/','00000000-0000-0000-0000-000000000000',1,'',GETDATE(),NULL)
+INSERT INTO T_Directory(Id,Name,OwnerId,IsRoot,ParentDirectoryId,CreateDate,LastModifyDate) values('00000000-0000-0000-0000-000000000000','/','00000000-0000-0000-0000-000000000000',1,'',GETDATE(),GETDATE())
