@@ -230,15 +230,15 @@ ul.section li {
 
 }
 ul.section li a {
-	background:url(../img/sidemenu-repeat.jpg) repeat-x;
+	background:url(img/sidemenu-repeat.jpg) repeat-x;
 	line-height:26px;
 }
 ul.section li a:hover {
-	background:url(../img/sidemenu-repeat-hover.jpg) repeat-x;
+	background:url(img/sidemenu-repeat-hover.jpg) repeat-x;
 }
 ul.section li a:active {
 	color:#1B548D;
-	background:url(../img/sidemenu-repeat-hover.jpg) repeat-x;
+	background:url(img/sidemenu-repeat-hover.jpg) repeat-x;
 }
 ul.section li li a {
 	background:#ddd;
@@ -266,15 +266,15 @@ ul.section ul.current li a:active {
 }
 ul.section li a.current {
 	color:#1B548D;
-	background:url(../img/sidemenu-repeat-hover.jpg) repeat-x;
+	background:url(img/sidemenu-repeat-hover.jpg) repeat-x;
 }
 ul.section li a.current:hover {
 	color:#1B548D;
-	background:url(../img/sidemenu-repeat-hover.jpg) repeat-x;
+	background:url(img/sidemenu-repeat-hover.jpg) repeat-x;
 }
 ul.section li a.current:active {
 	color:#1B548D;
-	background:url(../img/sidemenu-repeat-hover.jpg) repeat-x;
+	background:url(img/sidemenu-repeat-hover.jpg) repeat-x;
 }
 ul.section li a.active {
 	background:#fff;
@@ -768,7 +768,7 @@ img.right
 .btn-navy,
 .btn-maroon,
 .btn-teal,
-.btn-grey { background-image: url(../img/bg-dark.png) !important; }
+.btn-grey { background-image: url(img/bg-dark.png) !important; }
 
 
 /* 65% opacity for lighter colors */

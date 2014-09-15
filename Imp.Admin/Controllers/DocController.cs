@@ -1,14 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 using Imp.Admin.Models.Doc;
-using Imp.Core.Domain.Files;
 using Imp.Services.Files;
 using Imp.Services.Security;
 using Imp.Web.Framework.Controllers;
+using Directory = Imp.Core.Domain.Files.Directory;
 
 namespace Imp.Admin.Controllers
 {
@@ -49,19 +50,27 @@ namespace Imp.Admin.Controllers
             }
             var directory = _fileService.GetDirectory(id);
             var model = new DirectoryModel();
-            model.Name = directory.Name;
-            model.LastModifyDate = (DateTime)directory.LastModifyDate;
-            model.Id = directory.Id;
-            foreach (var subDirectory in directory.SubDirectories)
+            if (directory != null)
             {
-                model.SubDirectories.Add(new DirectoryModel.SubDirectory
+                model.Name = directory.Name;
+                model.LastModifyDate = directory.LastModifyDate;
+                model.Id = directory.Id;
+                foreach (var subDirectory in directory.SubDirectories)
+                {
+                    model.SubDirectories.Add(new DirectoryModel.SubDirectory
                     {
                         Id = subDirectory.Id,
                         Name = subDirectory.Name,
                         LastModifyDate = subDirectory.LastModifyDate
                     }
-                );
+                    );
+                }
             }
+            else
+            {
+                model.Id = id;
+            }
+
             return View(model);
         }
 
@@ -117,10 +126,22 @@ namespace Imp.Admin.Controllers
                 return AccessDeniedView();
             }
 
-            var directory = _fileService.GetDirectory(parentDirectoryId);
-
-            return View();
+            // var directory = _fileService.GetDirectory(parentDirectoryId);
+            var model = new UploadFileModel();
+            return View(model);
         }
+
+        [HttpPost]
+        public ActionResult UploadFile(HttpPostedFileBase file)
+        {
+            if (!_permissionService.Authroize("Doc.UploadFile"))
+            {
+                return AccessDeniedView();
+            }
+            // var fileName = Path.GetFileName(file.FileName);
+            return RedirectToAction("Index");
+        }
+
         #endregion
     }
 }

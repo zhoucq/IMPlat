@@ -62,6 +62,14 @@ namespace Imp.Services.Users
             _userRepository.Insert(user);
         }
 
+        /// <summary>
+        /// get all users
+        /// </summary>
+        /// <returns></returns>
+        public IList<User> GetAllUser()
+        {
+            return _userRepository.Table.Where(m => m.Deleted == false).ToList();
+        }
 
         #region Roles
 

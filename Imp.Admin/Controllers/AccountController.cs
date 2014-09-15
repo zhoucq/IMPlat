@@ -74,6 +74,18 @@ namespace Imp.Admin.Controllers
             return View(model);
         }
 
+        [HttpPost]
+        public ActionResult ListUser()
+        {
+            // var model = new UserListModel();
+            var users = _userService.GetAllUser();
+            var data = new
+            {
+                data = users
+            };
+            return Json(data);
+        }
+
         /// <summary>
         /// create a user
         /// </summary>/ 
@@ -81,8 +93,11 @@ namespace Imp.Admin.Controllers
         public ActionResult Create()
         {
             // all roles
-            ViewBag.AllRoles = _userService.GetAllRoles();
-            return View();
+            // ViewBag.AllRoles = _userService.GetAllRoles();
+            var model = new UserModel();
+            model.AvailableRoles = _userService.GetAllRoles().Select(m => m.ToModel()).ToList();
+            model.SelectedRoles= new List<RoleModel>();
+            return View(model);
         }
 
         [HttpPost]

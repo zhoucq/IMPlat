@@ -8,7 +8,10 @@
         $("#table_id").DataTable({
             "paging": false,
             "searching": false,
-            "info": false
+            "info": false,
+            "language": {
+                "emptyTable": "目录为空"
+            }
         });
     })
 </script>
@@ -23,7 +26,7 @@
         </h5>
     </div>
 
-    
+
     <table class="display" id="table_id">
         <thead>
             <tr>

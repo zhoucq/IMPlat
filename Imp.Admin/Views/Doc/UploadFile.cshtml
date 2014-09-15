@@ -1,15 +1,29 @@
-﻿@{
+﻿@model Imp.Admin.Models.Doc.UploadFileModel
+@{
     ViewBag.Title = "UploadFile";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
-
-<div class="box round first">
-    <h2>上传文件</h2>
-    <div class="block">
+<form action="" method="post" enctype="multipart/form-data">
+    <div class="box round first">
+        <h2>上传文件</h2>
+        <div class="block">
             <h5>
                 <input type="submit" class="btn btn-blue" value="保存" />
-                <input type="button" class="btn btn-grey" value="返回" onclick="location.href='@Url.Action("Index", "Doc")    '" />
+                <input type="button" class="btn btn-grey" value="返回" onclick=" location.href = '@Url.Action("Index", "Doc")    ' " />
             </h5>
         </div>
-
-</div>
+        <table class="form">
+            @*<tr>
+                <td class="col1">@Html.LabelFor(m => m.ParentDirectoryPath)</td>
+                <td>@Html.DisplayTextFor(m => m.ParentDirectoryPath)</td>
+            </tr>*@
+            <tr>
+                <td class="col1">@Html.LabelFor(m => m.File)</td>
+                <td>
+                    @Html.TextBoxFor(m => m.File, new { type = "file" })
+                    @Html.ValidationMessageFor(m => m.File)
+                </td>
+            </tr>
+        </table>
+    </div>
+</form>

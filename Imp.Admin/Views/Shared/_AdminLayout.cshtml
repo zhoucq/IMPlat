@@ -4,12 +4,13 @@
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
-    
+
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryui")
     @Scripts.Render("~/bundles/jqueryval")
-    
-    
+
+
     <link rel="stylesheet" href="@Url.Content("~/Content/reset.css")" media="screen" />
     <link rel="stylesheet" href="@Url.Content("~/Content/text.css")" media="screen" />
     <link rel="stylesheet" href="@Url.Content("~/Content/grid.css")" media="screen" />
@@ -50,36 +51,114 @@
 
         <div class="grid_12">
             <ul class="nav main">
-                <li><a href="dashboard.html"><span>文档中心</span></a> </li>
-                <li class="ic-form-style"><a href="javascript:"><span>系统设置</span></a>
+                <li><a href="@Url.Action("List", "Doc")"><span>文档中心</span></a> </li>
+                <li><a href="@Url.Action("List", "Account")"><span>用户管理</span></a> </li>
+                @*<li class="ic-form-style"><a href="javascript:"><span>用户管理</span></a>
                     <ul>
-                        <li><a href="form-controls.html">Forms</a> </li>
-                        <li><a href="buttons.html">Buttons</a> </li>
+                        <li><a href="@Url.Action("List", "Account")">用户</a> </li>
+                        <li><a href="buttons.html">用户组</a> </li>
                         <li><a href="form-controls.html">Full Page Example</a> </li>
                         <li><a href="table.html">Page with Sidebar Example</a> </li>
                     </ul>
-                </li>
-                <li class="ic-typography"><a href="typography.html"><span>Typography</span></a></li>
-                <li class="ic-charts"><a href="charts.html"><span>Charts & Graphs</span></a></li>
-                <li class="ic-grid-tables"><a href="table.html"><span>Data Table</span></a></li>
-                <li class="ic-gallery dd"><a href="javascript:"><span>Image Galleries</span></a>
-                    <ul>
-                        <li><a href="image-gallery.html">Pretty Photo</a> </li>
-                        <li><a href="gallery-with-filter.html">Gallery with Filter</a> </li>
-                    </ul>
-                </li>
-                <li class="ic-notifications"><a href="notifications.html"><span>Notifications</span></a></li>
-
+                </li>*@
             </ul>
         </div>
         <div class="clear">
         </div>
-        <div class="grid_12">
+
+        <div class="grid_2">
+            <div class="box sidemenu">
+                <div class="block" id="section-menu">
+                    <ul class="section menu">
+                        <li><a class="menuitem">Menu 1</a>
+                            <ul class="submenu">
+                                <li><a>Submenu 1</a> </li>
+                                <li><a>Submenu 2</a> </li>
+                                <li><a class="active">Submenu 3</a> </li>
+                                <li><a>Submenu 4</a> </li>
+                                <li><a>Submenu 5</a> </li>
+                            </ul>
+                        </li>
+                        <li><a class="menuitem">Menu 2</a>
+                            <ul class="submenu">
+                                <li><a>Submenu 1</a> </li>
+                                <li><a>Submenu 2</a> </li>
+                                <li><a>Submenu 3</a> </li>
+                                <li><a>Submenu 4</a> </li>
+                                <li><a>Submenu 5</a> </li>
+                            </ul>
+                        </li>
+                        <li><a class="menuitem">Menu 3</a>
+                            <ul class="submenu">
+                                <li><a>Submenu 1</a> </li>
+                                <li><a>Submenu 2</a> </li>
+                                <li><a>Submenu 3</a> </li>
+                                <li><a>Submenu 4</a> </li>
+                                <li><a>Submenu 5</a> </li>
+                            </ul>
+                        </li>
+                        <li><a class="menuitem">Menu 4</a>
+                            <ul class="submenu">
+                                <li><a>Submenu 1</a> </li>
+                                <li><a>Submenu 2</a> </li>
+                                <li><a>Submenu 3</a> </li>
+                                <li><a>Submenu 4</a> </li>
+                                <li><a>Submenu 5</a> </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+             <script>
+                 $(document).ready(function() {
+                     setupLeftMenu();
+                     setSidebarHeight();
+                 });
+                 function setupLeftMenu() {
+                     $("#section-menu")
+                         .accordion({
+                             "header": "a.menuitem"
+                         })
+                         .bind("accordionchangestart", function (e, data) {
+                             data.newHeader.next().andSelf().addClass("current");
+                             data.oldHeader.next().andSelf().removeClass("current");
+                         })
+                         .find("a.menuitem:first").addClass("current")
+                         .next().addClass("current");
+
+                     $('#section-menu .submenu').css('height', 'auto');
+                 }
+
+                 function setSidebarHeight() {
+                     setTimeout(function () {
+                         var height = $(document).height();
+                         $('.grid_12').each(function () {
+                             height -= $(this).outerHeight();
+                         });
+                         height -= $('#site_info').outerHeight();
+                         height -= 1;
+                         //salert(height);
+                         $('.sidemenu').css('height', height);
+                     }, 1);
+                 }
+
+                 
+    </script>
+        </div>
+
+        <div class="grid_10">
             @RenderBody()
         </div>
         <div class="clear">
         </div>
+
+        <div id="site_info">
+            <p>
+                Copyrigh MVS. All Rights Reserved.
+            </p>
+        </div>
     </div>
 
+   
 </body>
 </html>

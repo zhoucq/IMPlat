@@ -1,12 +1,47 @@
 ﻿@model Imp.Admin.Models.Users.UserListModel
 @{
-    ViewBag.Title = "Users";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "用户列表";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<script type="text/javascript">
-    $(document).ready(function() {
-        $("#btnQuery").bind('click', function() {
+<script language="javascript">
+    $(function() {
+        $("#tableUsers").DataTable(
+            {
+                "ajax": {
+                    "url":"@Url.Action("ListUser", "Account")",
+                    "type":"post"
+                },
+                "columns": [
+                    { "data": "Name" },
+                    { "data": "DisplayName" }
+                ]
+            }
+            );
+    });
+</script>
+
+<div class="box round first">
+    <h2>用户列表</h2>
+    <div class="block">
+        <h5>
+            <input type="button" class="btn btn-blue" value="新建" onclick="location.href='@Url.Action("Create", "Account")'" />
+        </h5>
+    </div>
+
+    <table id="tableUsers">
+        <thead>
+            <tr>
+                <th>用户名</th>
+                <th>姓名</th>
+            </tr>
+        </thead>
+    </table>
+</div>
+
+@*<script type="text/javascript">
+    $(document).ready(function () {
+        $("#btnQuery").bind('click', function () {
             $("#grid").kendoGrid();
         });
     });
@@ -66,4 +101,4 @@
             <th></th>
         </tr>
     </table>
-</div>
+</div>*@

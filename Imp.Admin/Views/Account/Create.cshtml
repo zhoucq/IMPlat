@@ -1,12 +1,83 @@
 ﻿@using Imp.Core.Domain.Users
+@model Imp.Admin.Models.Users.UserModel
 @{
-    ViewBag.Title = "Create";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "新建用户";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 @{
     IList<Role> allRoles = ViewBag.AllRoles;
 }
-<form role="form" id="formCreateUser" method="post" action="@Url.Action("Create", "Account")">
+
+@using (Html.BeginForm())
+{
+    <div class="box round first">
+        <h2>新建用户</h2>
+        <div class="block">
+            <h5>
+                <input type="submit" class="btn btn-blue" value="保存" />
+                <input type="button" class="btn btn-grey" value="返回" onclick="location.href='@Url.Action("Index", "Doc")    '" />
+            </h5>
+        </div>
+
+        <table class="form">
+            <tr>
+                <td class="col1">@Html.LabelFor(m => m.Username)</td>
+                <td>@Html.EditorFor(m => m.Username)
+                    @Html.ValidationMessageFor(m => m.Username)
+                </td>
+            </tr>
+            <tr>
+                <td class="col1">@Html.LabelFor(m => m.Password)</td>
+                <td>@Html.PasswordFor(m => m.Password)
+                    @Html.ValidationMessageFor(m => m.Password)
+                </td>
+            </tr>
+            <tr>
+                <td class="col1">@Html.LabelFor(m => m.Password2)</td>
+                <td>@Html.PasswordFor(m => m.Password2)
+                    @Html.ValidationMessageFor(m => m.Password2)
+                </td>
+            </tr>
+            <tr>
+                <td class="col1">@Html.LabelFor(m => m.DisplayName)</td>
+                <td>
+                    @Html.EditorFor(m => m.DisplayName)
+                    @Html.ValidationMessageFor(m => m.DisplayName)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(m => m.AvailableRoles)
+                </td>
+                <td>
+                    @Html.CheckBoxListFor(m => m.PostedRoles,
+                    m => m.AvailableRoles,
+                    e => e.Id,
+                    e => e.Name,
+                    m => m.SelectedRoles)
+                    @Html.ValidationMessageFor(m => m.PostedRoles, "必须选择一个角色")
+                </td>
+            </tr>
+        </table>
+    </div>
+}
+
+<script>
+    var validator;
+    $(function() {
+        validator = $('form').validate(
+            {
+                "rules": {
+                    "DisplayName":"required"
+                }, "messages": {
+                    DisplayName: "请选择至少一项角色"
+                }
+            }
+        
+        );
+    });
+</script>
+@*<form role="form" id="formCreateUser" method="post" action="@Url.Action("Create", "Account")">
     <div class="panel panel-default">
         <div class="panel-heading">
             创建用户 <a href="@Url.Action("List", "Account")" class="small">(返回用户列表)</a>
@@ -92,4 +163,4 @@
 
     });
 
-</script>
+</script>*@
