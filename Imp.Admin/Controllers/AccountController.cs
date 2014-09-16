@@ -93,15 +93,37 @@ namespace Imp.Admin.Controllers
         public ActionResult Create()
         {
             // all roles
-            // ViewBag.AllRoles = _userService.GetAllRoles();
             var model = new UserModel();
             model.AvailableRoles = _userService.GetAllRoles().Select(m => m.ToModel()).ToList();
-            model.SelectedRoles= new List<RoleModel>();
+            model.SelectedRoles = new List<RoleModel>();
             return View(model);
         }
 
         [HttpPost]
-        public ActionResult Create(FormCollection form)
+        public ActionResult Create(UserModel model)
+        {
+            var findUser = _userService.GetUserByUsername(model.Username);
+            if (findUser != null)
+            {
+                ModelState.AddModelError("Username", "用户名已经存在");
+                return View(model);
+            }
+
+            var user = new User();
+            user.Name = model.Username;
+            user.DisplayName = model.DisplayName;
+            user.Password = model.Password;
+            user.CreateDate = DateTime.Now;
+            foreach (var roleId in model.PostedRoles.RoleIds)
+            {
+                user.Roles.Add(_userService.GetRoleById(roleId));
+            }
+            _userService.InsertUser(user);
+            return RedirectToAction("Create");
+        }
+
+        [HttpPost]
+        public ActionResult Create1(FormCollection form)
         {
             var allRoles = _userService.GetAllRoles();
             var user = new User
@@ -126,7 +148,7 @@ namespace Imp.Admin.Controllers
             bool continueEditing = form.AllKeys.Contains("continueEditing");
             if (continueEditing)
             {
-                return View();
+                return View("Create");
             }
             else
             {

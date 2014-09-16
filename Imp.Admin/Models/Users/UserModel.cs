@@ -10,6 +10,8 @@ namespace Imp.Admin.Models.Users
 {
     public class UserModel : BaseImpEntityModel
     {
+        private IList<RoleModel> _availableRoles;
+
         public UserModel()
         {
         }
@@ -31,14 +33,19 @@ namespace Imp.Admin.Models.Users
         public string DisplayName { get; set; }
 
         [DisplayName("角色")]
-        public IList<RoleModel> AvailableRoles { get; set; }
+        public IList<RoleModel> AvailableRoles
+        {
+            get { return _availableRoles ?? (_availableRoles = new List<RoleModel>()); }
+            set { _availableRoles = value; }
+        }
+
         public IList<RoleModel> SelectedRoles { get; set; }
         public PostedRoles PostedRoles { get; set; }
     }
 
     public class PostedRoles
     {
-        
+
         public string[] RoleIds { get; set; }
     }
 }
