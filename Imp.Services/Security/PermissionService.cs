@@ -16,12 +16,12 @@ namespace Imp.Services.Security
         #endregion
 
         #region Methods
-        public bool Authroize(string permissionName, User user)
+        public bool Authorize(string permissionName, User user)
         {
             throw new System.NotImplementedException();
         }
 
-        public bool Authroize(string permissionName)
+        public bool Authorize(string permissionName)
         {
             //TODO: 权限认证
             return _authenticationService.GetAuthenticatedUser() != null;

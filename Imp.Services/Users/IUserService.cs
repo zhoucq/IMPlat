@@ -13,6 +13,10 @@ namespace Imp.Services.Users
     public interface IUserService
     {
         #region Users
+
+        User GetUser(string id);
+
+        void UpdateUser(User user);
         /// <summary>
         /// 根据用户名获取User
         /// </summary>

@@ -8,20 +8,28 @@ using Imp.Admin.Models.Users;
 using Imp.Core.Domain.Users;
 using Imp.Services.Security;
 using Imp.Services.Users;
+using Imp.Web.Framework.Controllers;
 
 namespace Imp.Admin.Controllers
 {
-    public class AccountController : Controller
+    public class AccountController : BaseController
     {
+        #region Fields
         private readonly IUserService _userService;
         private readonly IAuthenticationService _authenticationService;
-        public AccountController(IUserService userService, IAuthenticationService authenticationService)
+        private readonly IPermissionService _permissionService;
+        #endregion
+
+        #region Ctor
+
+        public AccountController(IUserService userService, IAuthenticationService authenticationService, IPermissionService permissionService)
         {
             _userService = userService;
             _authenticationService = authenticationService;
+            _permissionService = permissionService;
         }
 
-
+        #endregion
 
 
 
@@ -69,6 +77,10 @@ namespace Imp.Admin.Controllers
         // 用户列表
         public ActionResult List()
         {
+            if (!_permissionService.Authorize("User.List"))
+            {
+                return AccessDeniedView();
+            }
             var model = new UserListModel();
             model.AvailableRoles = _userService.GetAllRoles().Select(m => m.ToModel()).ToList();
             return View(model);
@@ -77,8 +89,12 @@ namespace Imp.Admin.Controllers
         [HttpPost]
         public ActionResult ListUser()
         {
-            // var model = new UserListModel();
+            if (!_permissionService.Authorize("User.List"))
+            {
+                return AccessDeniedView();
+            }
             var users = _userService.GetAllUser();
+
             var data = new
             {
                 data = users
@@ -92,21 +108,39 @@ namespace Imp.Admin.Controllers
         /// <returns></returns>
         public ActionResult Create()
         {
+            if (!_permissionService.Authorize("User.Create"))
+            {
+                return AccessDeniedView();
+            }
+
             // all roles
             var model = new UserModel();
             model.AvailableRoles = _userService.GetAllRoles().Select(m => m.ToModel()).ToList();
             model.SelectedRoles = new List<RoleModel>();
-            return View(model);
+            return View("Create", model);
         }
 
         [HttpPost]
         public ActionResult Create(UserModel model)
         {
+            if (!_permissionService.Authorize("User.Create"))
+            {
+                return AccessDeniedView();
+            }
             var findUser = _userService.GetUserByUsername(model.Username);
             if (findUser != null)
             {
                 ModelState.AddModelError("Username", "用户名已经存在");
-                return View(model);
+                // return View(model);
+            }
+            if (model.PostedRoles == null || model.PostedRoles.RoleIds.Length == 0)
+            {
+                ModelState.AddModelError("PostedRoles.RoleIds", "至少需要选择一个角色");
+            }
+            if (!ModelState.IsValid)
+            {
+                model.AvailableRoles = _userService.GetAllRoles().Select(m => m.ToModel()).ToList();
+                return View("Create", model);
             }
 
             var user = new User();
@@ -114,48 +148,76 @@ namespace Imp.Admin.Controllers
             user.DisplayName = model.DisplayName;
             user.Password = model.Password;
             user.CreateDate = DateTime.Now;
+            user.Active = true;
+            user.Deleted = false;
             foreach (var roleId in model.PostedRoles.RoleIds)
             {
                 user.Roles.Add(_userService.GetRoleById(roleId));
             }
             _userService.InsertUser(user);
-            return RedirectToAction("Create");
+            return RedirectToAction("Index", "Account");
+        }
+
+        public ActionResult Edit(string id)
+        {
+            if (!_permissionService.Authorize("User.Create"))
+            {
+                return AccessDeniedView();
+            }
+
+            var user = _userService.GetUser(id);
+            if (user == null)
+            {
+                return RedirectToAction("List");
+            }
+
+
+            var model = new UserModel();
+            model.Id = user.Id;
+            model.Username = user.Name;
+            model.DisplayName = user.DisplayName;
+            model.AvailableRoles = _userService.GetAllRoles().Select(m => m.ToModel()).ToList();
+            model.SelectedRoles = user.Roles.Select(m => m.ToModel()).ToList();
+            return View("Edit", model);
         }
 
         [HttpPost]
-        public ActionResult Create1(FormCollection form)
+        public ActionResult Edit(UserModel model)
         {
-            var allRoles = _userService.GetAllRoles();
-            var user = new User
+            if (model == null)
             {
-                Name = form["username"],
-                Password = form["password"],
-                DisplayName = form["displayName"],
-                CreateDate = DateTime.Now
-            };
-            if (string.IsNullOrEmpty(form["role"]))
-            {
-                throw new ArgumentNullException("role");
-            }
-            var roleIds = form["role"].Split(',');
-
-            foreach (var roleId in roleIds)
-            {
-                user.Roles.Add(allRoles.FirstOrDefault(m => m.Id == roleId));
-            }
-            _userService.InsertUser(user);
-
-            bool continueEditing = form.AllKeys.Contains("continueEditing");
-            if (continueEditing)
-            {
-                return View("Create");
-            }
-            else
-            {
-                return RedirectToAction("List", "Account");
+                return RedirectToAction("List");
             }
 
+            if (model.PostedRoles == null || model.PostedRoles.RoleIds.Length == 0)
+            {
+                ModelState.AddModelError("PostedRoles.RoleIds", "至少需要选择一个角色");
+            }
+            ModelState.Remove("Username");
+            if (ModelState.IsValid)
+            {
+                var user = _userService.GetUser(model.Id);
+                if (user == null)
+                {
+                    return RedirectToAction("List");
+                }
+                if (!string.IsNullOrWhiteSpace(model.Password))
+                {
+                    // 密码为空时，不需要修改密码
+                    user.Password = model.Password;
+                }
+
+                user.DisplayName = model.DisplayName;
+                user.Password = model.Password;
+                user.Active = true;
+                user.Deleted = false;
+                _userService.UpdateUser(user);
+                return RedirectToAction("List");
+            }
+            model.AvailableRoles = _userService.GetAllRoles().Select(m => m.ToModel()).ToList();
+            return View(model);
         }
+
         #endregion
 
         #endregion

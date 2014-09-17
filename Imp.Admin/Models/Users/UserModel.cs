@@ -21,7 +21,6 @@ namespace Imp.Admin.Models.Users
         public string Username { get; set; }
 
         [DisplayName("密码")]
-        [Required(ErrorMessage = "密码不能为空")]
         public string Password { get; set; }
 
         [DisplayName("重复密码")]

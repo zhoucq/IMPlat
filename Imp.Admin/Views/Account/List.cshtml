@@ -14,10 +14,21 @@
                 },
                 "columns": [
                     { "data": "Name" },
-                    { "data": "DisplayName" }
+                    { "data": "DisplayName" },
+                    {
+                        "data": "Roles",
+                        "render":"[, ].Name"
+                    },
+                    {
+                        "data":"Id",
+                        "render":function(obj) {
+                            console.log(obj);
+                            var url = '@Url.Content("~/Account/Edit")/' + obj;
+                            return "<a href='"+url+"'>编辑</a>";
+                        }
+                    }
                 ]
-            }
-            );
+            });
     });
 </script>
 
@@ -29,11 +40,13 @@
         </h5>
     </div>
 
-    <table id="tableUsers">
+    <table id="tableUsers" class="stripe row-border hover">
         <thead>
             <tr>
                 <th>用户名</th>
                 <th>姓名</th>
+                <th>角色</th>
+                <th></th>
             </tr>
         </thead>
     </table>

@@ -1,13 +1,14 @@
 ﻿@model Imp.Admin.Models.Users.UserModel
 @{
-    ViewBag.Title = "新建用户";
+    ViewBag.Title = "编辑用户";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-@using (Html.BeginForm("Create", "Account"))
+@using (Html.BeginForm("Edit", "Account"))
 {
+    @Html.HiddenFor(m => m.Id)
     <div class="box round first">
-        <h2>新建用户</h2>
+        <h2>编辑用户</h2>
         <div class="block">
             <h5>
                 <input type="submit" class="btn btn-blue" value="保存" />
@@ -18,14 +19,14 @@
         <table class="form">
             <tr>
                 <td class="col1">@Html.LabelFor(m => m.Username)</td>
-                <td>@Html.EditorFor(m => m.Username)
-                    @Html.ValidationMessageFor(m => m.Username)
+                <td>@Html.DisplayFor(m => m.Username)
+                    @*@Html.HiddenFor(m => m.Username)*@
                 </td>
             </tr>
             <tr>
                 <td class="col1">@Html.LabelFor(m => m.Password)</td>
-                <td>@Html.PasswordFor(m => m.Password, new { data_val_required = "true",data_val="true" })
-                    @Html.ValidationMessageFor(m => m.Password, "密码不能为空")
+                <td>@Html.PasswordFor(m => m.Password)
+                    @Html.ValidationMessageFor(m => m.Password)
                 </td>
             </tr>
             <tr>

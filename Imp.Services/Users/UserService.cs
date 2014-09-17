@@ -29,6 +29,19 @@ namespace Imp.Services.Users
 
         #region Methods
 
+        public User GetUser(string id)
+        {
+            return _userRepository.GetById(id);
+        }
+
+        public void UpdateUser(User user)
+        {
+            if (user == null)
+            {
+                throw new ArgumentNullException("user");
+            }
+            _userRepository.Update(user);
+        }
         /// <summary>
         /// get user by username
         /// </summary>

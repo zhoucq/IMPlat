@@ -39,7 +39,7 @@ namespace Imp.Admin.Controllers
 
         public ActionResult List(string id)
         {
-            if (!_permissionService.Authroize("Doc.List"))
+            if (!_permissionService.Authorize("Doc.List"))
             {
                 return AccessDeniedView();
             }
@@ -77,7 +77,7 @@ namespace Imp.Admin.Controllers
         [HttpPost]
         public ActionResult DirectoryList(string directoryId)
         {
-            if (!_permissionService.Authroize("Doc.List"))
+            if (!_permissionService.Authorize("Doc.List"))
             {
                 return AccessDeniedView();
             }
@@ -88,7 +88,7 @@ namespace Imp.Admin.Controllers
 
         public ActionResult CreateDirectory(string parentDirectoryId)
         {
-            if (!_permissionService.Authroize("Doc.CreateDirectory"))
+            if (!_permissionService.Authorize("Doc.CreateDirectory"))
             {
                 return AccessDeniedView();
             }
@@ -104,7 +104,7 @@ namespace Imp.Admin.Controllers
         [HttpPost]
         public ActionResult CreateDirectory(CreateDirectoryModel model)
         {
-            if (!_permissionService.Authroize("Doc.CreateDirectory"))
+            if (!_permissionService.Authorize("Doc.CreateDirectory"))
             {
                 return AccessDeniedView();
             }
@@ -121,7 +121,7 @@ namespace Imp.Admin.Controllers
 
         public ActionResult UploadFile(string parentDirectoryId)
         {
-            if (!_permissionService.Authroize("Doc.UploadFile"))
+            if (!_permissionService.Authorize("Doc.UploadFile"))
             {
                 return AccessDeniedView();
             }
@@ -134,7 +134,7 @@ namespace Imp.Admin.Controllers
         [HttpPost]
         public ActionResult UploadFile(HttpPostedFileBase file)
         {
-            if (!_permissionService.Authroize("Doc.UploadFile"))
+            if (!_permissionService.Authorize("Doc.UploadFile"))
             {
                 return AccessDeniedView();
             }
