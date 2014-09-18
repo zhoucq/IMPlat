@@ -38,6 +38,9 @@ namespace Imp.Admin.Models.Users
             set { _availableRoles = value; }
         }
 
+        [DisplayName("状态")]
+        public bool Active { get; set; }
+
         public IList<RoleModel> SelectedRoles { get; set; }
         public PostedRoles PostedRoles { get; set; }
     }

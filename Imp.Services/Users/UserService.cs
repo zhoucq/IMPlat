@@ -92,7 +92,7 @@ namespace Imp.Services.Users
         /// <returns></returns>
         public IList<Role> GetAllRoles()
         {
-            var roles = from o in _roleRepository.Table orderby o.DisplayOrder select o;
+            var roles = from o in _roleRepository.Table where !o.Deleted orderby o.DisplayOrder select o;
             return roles.ToList();
         }
 
@@ -105,6 +105,32 @@ namespace Imp.Services.Users
         {
             return _roleRepository.GetById(id);
         }
+
+        public Role GetRoleByName(string name)
+        {
+            if (string.IsNullOrEmpty(name)) return null;
+            return _roleRepository.Table.First(m => m.Name == name);
+        }
+
+        public void InsertRole(Role role)
+        {
+            if (role == null)
+            {
+                throw new ArgumentNullException("role");
+            }
+
+            _roleRepository.Insert(role);
+        }
+
+        public void UpdateRole(Role role)
+        {
+            if (role == null)
+            {
+                throw new ArgumentNullException("role");
+            }
+            _roleRepository.Update(role);
+        }
+
         #endregion
 
         #endregion

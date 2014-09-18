@@ -43,6 +43,12 @@ namespace Imp.Services.Users
         /// <returns></returns>
         Role GetRoleById(string id);
 
+        Role GetRoleByName(string name);
+
+        void InsertRole(Role role);
+
+        void UpdateRole(Role role);
+
         #endregion
     }
 }

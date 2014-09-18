@@ -1,0 +1,43 @@
+﻿@model Imp.Admin.Models.Users.RoleModel
+@{
+    ViewBag.Title = "新建角色";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@using (Html.BeginForm("Create", "Role",FormMethod.Post,new{@class="form-horizontal"}))
+{
+    <div class="box round first">
+        <h2>新建角色</h2>
+        <div class="block">
+            <h5>
+                <input type="submit" class="btn btn-blue" value="保存" />
+                <input type="button" class="btn btn-grey" value="返回" onclick="location.href='@Url.Action("List", "Role")    '" />
+            </h5>
+        </div>
+
+        <table class="form">
+            <tr>
+                <td class="col1">@Html.LabelFor(m => m.Name)</td>
+                <td>@Html.TextBoxFor(m => m.Name)
+                    @Html.ValidationMessageFor(m => m.Name)
+                </td>
+            </tr>
+            <tr>
+                <td class="col1">@Html.LabelFor(m => m.DisplayOrder)</td>
+                <td>@Html.TextBoxFor(m => m.DisplayOrder,new{Value="0"})
+                    @Html.ValidationMessageFor(m => m.DisplayOrder)
+                </td>
+            </tr>
+            <tr>
+                <td class="col1">@Html.LabelFor(m=>m.IsSystemRole)</td>
+                <td>
+                    <label>
+                        @Html.CheckBoxFor(m=>m.IsSystemRole)是否系统角色
+                    </label>
+                </td>
+            </tr>
+        </table>
+
+    </div>
+}
+

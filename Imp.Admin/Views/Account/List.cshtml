@@ -20,14 +20,32 @@
                         "render":"[, ].Name"
                     },
                     {
+                        "data":"Active",
+                        "render":function(obj) {
+                            return obj ? "正常" : "未激活";
+                        }
+                    },
+                    {
                         "data":"Id",
                         "render":function(obj) {
                             console.log(obj);
                             var url = '@Url.Content("~/Account/Edit")/' + obj;
-                            return "<a href='"+url+"'>编辑</a>";
+                            var delurl= '@Url.Content("~/Account/Delete")/' + obj;
+                            return "<a href='"+url+"'>编辑</a><a style='margin-left:10px;cursor:pointer;' onclick="+'"'+"if(confirm('确定删除？')){location.href='"+delurl+"';}"+'"'+">删除</a>";
                         }
                     }
-                ]
+                ],
+                "oLanguage": {
+                    "sLengthMenu": "每页显示 _MENU_ 条记录",
+                    "sSearch":"搜索",
+                    "sInfo": "当前显示 _START_ 到 _END_ 条，共 _TOTAL_ 条记录",
+                    "oPaginate": {
+                        "sFirst": "首页",
+                        "sPrevious": "上一页",
+                        "sNext": "下一页",
+                        "sLast": "末页"
+                    }
+                }
             });
     });
 </script>
@@ -46,6 +64,7 @@
                 <th>用户名</th>
                 <th>姓名</th>
                 <th>角色</th>
+                <th>状态</th>
                 <th></th>
             </tr>
         </thead>

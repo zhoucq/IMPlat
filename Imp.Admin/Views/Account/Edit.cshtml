@@ -55,6 +55,14 @@
                     @Html.ValidationMessageFor(m => m.PostedRoles.RoleIds, "至少需要选择一个角色")
                 </td>
             </tr>
+             <tr>
+                <td class="col1">@Html.LabelFor(m=>m.Active)</td>
+                  <td>
+                      <label>
+                          @Html.CheckBoxFor(m=>m.Active)是否激活
+                      </label>
+                  </td>
+            </tr>
         </table>
     </div>
 }

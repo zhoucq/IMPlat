@@ -31,6 +31,11 @@ namespace Imp.Core.Domain.Users
         public bool IsSystemRole { get; set; }
 
         /// <summary>
+        /// 是否被删除
+        /// </summary>
+        public bool Deleted { get; set; }
+
+        /// <summary>
         /// permissions of role
         /// </summary>
         public virtual ICollection<Permission> Permissions

@@ -18,6 +18,7 @@ namespace Imp.Data.Mapping.Users
             this.Property(m => m.Name).IsRequired().HasColumnName("Name");
             this.Property(m => m.SystemName).HasColumnName("SystemName");
             this.Property(m => m.DisplayOrder).HasColumnName("DisplayOrder");
+            this.Property(m => m.Deleted).HasColumnName("Deleted");
             this.HasMany(m => m.Permissions)
                 .WithMany()
                 .Map(m =>

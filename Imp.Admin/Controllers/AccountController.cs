@@ -148,7 +148,7 @@ namespace Imp.Admin.Controllers
             user.DisplayName = model.DisplayName;
             user.Password = model.Password;
             user.CreateDate = DateTime.Now;
-            user.Active = true;
+            user.Active = model.Active;
             user.Deleted = false;
             foreach (var roleId in model.PostedRoles.RoleIds)
             {
@@ -178,6 +178,7 @@ namespace Imp.Admin.Controllers
             model.DisplayName = user.DisplayName;
             model.AvailableRoles = _userService.GetAllRoles().Select(m => m.ToModel()).ToList();
             model.SelectedRoles = user.Roles.Select(m => m.ToModel()).ToList();
+            model.Active = user.Active;
             return View("Edit", model);
         }
 
@@ -209,13 +210,34 @@ namespace Imp.Admin.Controllers
 
                 user.DisplayName = model.DisplayName;
                 user.Password = model.Password;
-                user.Active = true;
+                user.Active = model.Active;
                 user.Deleted = false;
+                user.Roles.Clear();
+                foreach (var roleId in model.PostedRoles.RoleIds)
+                {
+                    user.Roles.Add(_userService.GetRoleById(roleId));
+                }
                 _userService.UpdateUser(user);
                 return RedirectToAction("List");
             }
             model.AvailableRoles = _userService.GetAllRoles().Select(m => m.ToModel()).ToList();
             return View(model);
+        }
+
+        public ActionResult Delete(string id)
+        {
+            if (!_permissionService.Authorize("User.Delete"))
+            {
+                return AccessDeniedView();
+            }
+
+            var user = _userService.GetUser(id);
+            if (user != null)
+            {
+                user.Deleted = true;
+                _userService.UpdateUser(user);
+            }
+            return RedirectToAction("List");
         }
 
         #endregion

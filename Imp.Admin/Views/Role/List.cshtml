@@ -1,59 +1,69 @@
 ﻿@using Imp.Core.Domain.Users
 @{
     ViewBag.Title = "List";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
-@*<div class="navbar">
-    <div class="navbar-inner">
-        <ul class="breadcrumb">
-            <i class="icon-chevron-left hide-sidebar"><a href='#' title="Hide Sidebar" rel='tooltip'>&nbsp;</a></i>
-            <i class="icon-chevron-right show-sidebar" style="display: none;"><a href='#' title="Show Sidebar" rel='tooltip'>&nbsp;</a></i>
-            <li>
-                <a href="#">系统设置</a>
-            </li>
-            <li>
-                <a href="#">角色权限</a>
-            </li>
-            <li class="active">权限</li>
-        </ul>
-    </div>
-</div>*@
-@*<div class="row">
 
-        <div class="block">
-           <div class="navbar navbar-inner block-header">
-                                <div class="muted pull-left">Statistics</div>
-                                <div class="pull-right"><span class="badge badge-warning">View More</span>
-
-                                </div>
-                            </div>
-        </div>
-    </div>*@
-<div class="panel panel-default">
-    <div class="panel-heading">角色权限</div>
-    <div class="panel-body pull-right">
-        @*<button class="btn btn-default">添加</button>*@
-    </div>
-    <table class="table table-responsive table-striped">
-
-        <tr>
-            <th>名称</th>
-            <th>是否系统角色</th>
-        </tr>
-
-        @{
-            IList<Role> roles = ViewBag.Roles;
-            foreach (Role role in roles)
+<script type="text/javascript">
+    jQuery(document).ready(function() {
+        jQuery("#rolelist").DataTable(
             {
+                "oLanguage": {
+                    "sLengthMenu": "每页显示 _MENU_ 条记录",
+                    "sSearch":"搜索",
+                    "sInfo": "当前显示 _START_ 到 _END_ 条，共 _TOTAL_ 条记录",
+                    "oPaginate": {
+                        "sFirst": "首页",
+                        "sPrevious": "上一页",
+                        "sNext": "下一页",
+                        "sLast": "末页"
+                    }
+                }
+            });
+    });
+</script>
+
+
+<div class="box round first">
+    <h2>角色权限</h2>
+    <div class="block">
+        <h5>
+            <input type="button" class="btn btn-blue" value="新建" onclick="location.href='@Url.Action("Create", "Role")'" />
+        </h5>
+    </div>
+    <table id="rolelist" class="stripe row-border hover">
+
+        <thead>
             <tr>
-                <td>
-                    @role.Name
-                </td>
-                <td>
-                    @role.IsSystemRole
-                </td>
+                <th>序号</th>
+                <th>名称</th>
+                <th>是否系统角色</th>
+                <th></th>
             </tr>
+        </thead>
+        <tbody>
+            @{
+                int j = 0;
             }
-        }
+            @foreach (Role role in ViewBag.Roles)
+            {
+                j++;
+                <tr>
+                    <td>@j</td>
+                    <td>
+                        @role.Name
+                    </td>
+                    <td>@{
+                            string isSystemRole = role.IsSystemRole ? "是" : "否";
+                        }
+                        @isSystemRole
+                    </td>
+                    <td>
+                        @Html.ActionLink("编辑","Edit","Role",new{role.Id},null)
+                        <a style='margin-left:10px;cursor:pointer;' onclick="if(confirm('确定删除？')) location.href='@Url.Content("~/Role/Delete/"+role.Id)'">删除</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
     </table>
 </div>
-
